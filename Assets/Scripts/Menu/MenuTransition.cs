@@ -8,16 +8,19 @@ public class MenuTransition : MonoBehaviour
     //private bool isFaded = false;
 
     private float duration = 0.4f;
-    private float hiddenPositionX = -100f;
+    //private float hiddenPositionX = -100f;
     //private float hiddenPositionY = 0f;
 
     private Vector2 hiddenPos;
     private Vector2 showPos;
 
-    private void Start()
+    void Start()
     {
         hiddenPos = new Vector2(-100f, transform.position.y);
-        showPos = new Vector2(transform.position.x, transform.position.y);
+        showPos = new Vector2(487f, transform.position.y);
+
+        Debug.Log(transform.position.x);
+        Debug.Log(transform.position.y);
     }
 
     public void Fade(bool isFaded)
@@ -42,7 +45,14 @@ public class MenuTransition : MonoBehaviour
 
         //On active le fade, (si isFaded = false, alors ca veut dire que alpha = 1 donc la fin du alpha sera 0)
         StartCoroutine(DoFade(canvGroup, canvGroup.alpha, isFaded ? 1 : 0, isFaded));
-        StartCoroutine(Translation(canvGroup, showPos, hiddenPos));
+
+        if(!isFaded)
+        {
+            StartCoroutine(Translation(canvGroup, showPos, hiddenPos));
+        } else
+        {
+            StartCoroutine(Translation(canvGroup, hiddenPos, showPos));
+        }
 
 
         //isFaded = !isFaded;
@@ -107,6 +117,7 @@ public class MenuTransition : MonoBehaviour
             //    Translation(canvGrp, showPos, hiddenPos);
             //}
 
+            //this.gameObject.transform.position = Vector2.Lerp(actualPos, nextPos, counter / duration);
             transform.position = Vector2.Lerp(actualPos, nextPos, counter / duration);
 
             yield return null;
