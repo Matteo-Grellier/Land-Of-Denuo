@@ -16,6 +16,7 @@ public class Characters : MonoBehaviour
     float speedMovement = 5f;
 
     public Rigidbody2D rb;
+    
 
     // Start is called before the first frame update
     void Start()

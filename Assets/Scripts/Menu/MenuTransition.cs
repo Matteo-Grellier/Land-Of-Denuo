@@ -8,7 +8,7 @@ public class MenuTransition : MonoBehaviour
     //private bool isFaded = false;
 
     private float duration = 0.4f;
-    private float hiddenPositionX = -100f;
+    //private float hiddenPositionX = -100f;
     //private float hiddenPositionY = 0f;
 
     private Vector2 hiddenPos;
