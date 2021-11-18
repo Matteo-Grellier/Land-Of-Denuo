@@ -22,6 +22,12 @@ public class Player : Characters
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if(movement.x != 0 && movement.y == 0 || movement.x == 0 && movement.y != 0)
+        {
+            animator.SetFloat("PreviousHorizontal", movement.x);
+            animator.SetFloat("PreviousVertical", movement.y);
+        }
     }
 
 }
