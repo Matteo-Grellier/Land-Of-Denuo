@@ -790,8 +790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31a21f1411b68c4eaf9e41e2b6ebd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 0a127860405329546aa69f1edcbf1f6a, type: 2}
---- !u!212 &646835814
+  rb: {fileID: 793722473}
+  animator: {fileID: 793722474}
+--- !u!212 &793722471
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
