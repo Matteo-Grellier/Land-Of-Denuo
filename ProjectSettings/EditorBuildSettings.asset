@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene 3.unity
     guid: 5b90d76040e0e8845b0ea14acd100373
+  - enabled: 1
+    path: Assets/Scenes/FrehdHome.unity
+    guid: da8610fce25e185429c089cea0d693eb
   m_configObjects: {}
