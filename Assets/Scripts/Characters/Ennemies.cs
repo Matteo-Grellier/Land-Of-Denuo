@@ -13,11 +13,13 @@ public class Ennemies : Characters
     private bool moving;
     public float timeBetweenMove;
     private Vector3 moveDirection;
+ 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        health = this.maxHealth;
     }
 
     // Update is called once per frame
@@ -26,6 +28,30 @@ public class Ennemies : Characters
     {
         moveEnemy();
     }
+
+    public void TakeDamage(int damage)
+    {
+
+        if (health > 0)
+        {
+            health -= damage;
+        }
+
+
+        if (health <= 0)
+        {
+            Die();
+
+        }
+    }
+
+    void Die()
+    {
+
+        Destroy(gameObject);
+
+    }
+
     void moveEnemy()
     {
         Debug.Log(target.transform.position.x - Enemy.transform.position.x);

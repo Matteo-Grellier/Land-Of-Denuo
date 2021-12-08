@@ -6,8 +6,8 @@ public class Characters : MonoBehaviour
 {
     
     //propriétés d'un personnage
-    float maxHealth = 100;
-    float health = 100;
+    protected int maxHealth = 100;
+    protected int health = 100;
     float defense = 0;
     float damage = 0;
 
