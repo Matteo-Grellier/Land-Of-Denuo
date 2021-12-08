@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 512870711}
   - component: {fileID: 512870712}
   - component: {fileID: 512870713}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bandit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -964,14 +964,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044935822}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.621, y: -0.004, z: -2.339385}
+  m_LocalRotation: {x: -0, y: -0.032733753, z: -0, w: 0.9994641}
+  m_LocalPosition: {x: 3.45, y: -0.0039999485, z: -2.15}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 52597067}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -3.752, z: 0}
 --- !u!114 &2044935826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,9 +1021,9 @@ MonoBehaviour:
   attackPoint: {fileID: 52597067}
   enemylayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 3072
   attackRange: 2.52
-  attackDamage: 60
+  attackDamage: 10
 --- !u!61 &2044935829
 BoxCollider2D:
   m_ObjectHideFlags: 0
