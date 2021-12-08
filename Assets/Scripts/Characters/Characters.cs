@@ -21,16 +21,38 @@ public class Characters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = this.maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
+    public void TakeDamage(int damage)
+    {
 
+        if (health > 0)
+        {
+            health -= damage;
+        }
+
+
+        if (health <= 0)
+        {
+            Die();
+
+        }
+    }
+
+    void Die()
+    {
+
+        Destroy(gameObject);
+
+    }
+    
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * speedMovement * Time.fixedDeltaTime);
