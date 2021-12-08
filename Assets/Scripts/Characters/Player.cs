@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Characters
 {
+    protected Vector2 direction;
     public Animator animator;
 
 
