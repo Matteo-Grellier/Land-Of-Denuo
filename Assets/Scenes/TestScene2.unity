@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 58161}
   - component: {fileID: 58160}
   m_Layer: 0
-  m_Name: byebox
+  m_Name: TPBOX_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderName: {fileID: 58161}
   Scenenumber: 2
+  TPBoxNumber: 3
   transition: {fileID: 574859293}
   transitionTime: 1
 --- !u!61 &58161

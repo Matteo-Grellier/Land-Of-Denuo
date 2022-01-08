@@ -8,6 +8,7 @@ public class MapChange : MonoBehaviour
     public Collider2D colliderName; //let the script in unity have an argument of wich trigger box is triggered
 
     public int Scenenumber; //let the script in unity have an argument of wich scene should you launch
+    public int TPBoxNumber; //let the script in unity have an argument of wich object you should tp to when spawning
 
     public Animator transition; // let the script in unity select an animation
     public float transitionTime = 1f ;// let the script in unity select a time of animation
@@ -16,7 +17,8 @@ public class MapChange : MonoBehaviour
     {
         if(colliderName.gameObject.CompareTag("Player"))
         {
-            LoadLevel(Scenenumber); 
+            Player.lastTakenTpNumber = TPBoxNumber;
+            LoadLevel(Scenenumber);
         }
     }
 

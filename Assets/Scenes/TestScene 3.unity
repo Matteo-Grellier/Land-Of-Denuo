@@ -1778,7 +1778,7 @@ GameObject:
   - component: {fileID: 1511732728}
   - component: {fileID: 1511732727}
   m_Layer: 0
-  m_Name: bridgetriggerbox
+  m_Name: TPBOX_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,6 +1798,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderName: {fileID: 1511732728}
   Scenenumber: 2
+  TPBoxNumber: 4
   transition: {fileID: 1939869624}
   transitionTime: 1
 --- !u!61 &1511732728

@@ -919,6 +919,36 @@ Sprite:
   m_PhysicsShape: []
   m_Bones: []
   m_SpriteID: 
+--- !u!1 &273024784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273024785}
+  m_Layer: 0
+  m_Name: OUT_TP4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273024785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273024784}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.21, y: 1.86, z: -24.328726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454116014
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +962,7 @@ GameObject:
   - component: {fileID: 454116016}
   - component: {fileID: 454116015}
   m_Layer: 0
-  m_Name: rightbox
+  m_Name: TPBOX_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -952,6 +982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderName: {fileID: 454116016}
   Scenenumber: 3
+  TPBoxNumber: 1
   transition: {fileID: 1984909635}
   transitionTime: 1
 --- !u!61 &454116016
@@ -6842,7 +6873,7 @@ GameObject:
   - component: {fileID: 1837007645}
   - component: {fileID: 1837007644}
   m_Layer: 0
-  m_Name: lefttriggerbox
+  m_Name: TPBOX_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6862,6 +6893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliderName: {fileID: 1837007645}
   Scenenumber: 4
+  TPBoxNumber: 2
   transition: {fileID: 1984909635}
   transitionTime: 1
 --- !u!61 &1837007645
@@ -7043,6 +7075,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848266661}
   m_CullTransparentMesh: 1
+--- !u!1 &1916900852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916900853}
+  m_Layer: 0
+  m_Name: OUT_TP3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1916900853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916900852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.78, y: 0.06, z: -24.328726}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!213 &1943076456
 Sprite:
   m_ObjectHideFlags: 0
