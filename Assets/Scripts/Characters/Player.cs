@@ -7,7 +7,6 @@ public class Player : Characters
     protected Vector2 direction;
     public Animator animator;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +29,5 @@ public class Player : Characters
             animator.SetFloat("PreviousVertical", movement.y);
         }
     }
-
     
 }
