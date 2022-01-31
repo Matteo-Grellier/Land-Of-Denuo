@@ -34,7 +34,7 @@ public class Player : Characters
 
     //To spawn the player at the good spot depending on wich teleporter he took
     void SpawnTP() {
-        Vector3 position1 = new Vector3(4.41f, 0.17f, 0.0f);
+        Vector3 position1 = new Vector3(0.06f, -3.12f, 0.0f);
         Vector3 position2 = new Vector3(6.49f, -2.76f, 0.0f);
         Vector3 position3 = new Vector3(8.78f, 0.06f, 0.0f);
         Vector3 position4 = new Vector3(-8.21f, 1.86f, 0.0f);
