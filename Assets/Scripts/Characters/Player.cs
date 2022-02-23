@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Player : Characters
 {
-    protected Vector2 direction;
     public Animator animator;
+
+    //for scene transition purpose 
+    public static int lastTakenTpNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        SpawnTP();
     }
 
     // Update is called once per frame
@@ -29,5 +31,28 @@ public class Player : Characters
             animator.SetFloat("PreviousVertical", movement.y);
         }
     }
-    
+
+    //To spawn the player at the good spot depending on wich teleporter he took
+    void SpawnTP() {
+        Vector3 position1 = new Vector3(0.06f, -3.12f, 0.0f);
+        Vector3 position2 = new Vector3(6.49f, -2.76f, 0.0f);
+        Vector3 position3 = new Vector3(8.78f, 0.06f, 0.0f);
+        Vector3 position4 = new Vector3(-8.21f, 1.86f, 0.0f);
+
+        switch(lastTakenTpNumber) {
+            case 1:
+                transform.position = position1;
+                break;
+            case 2:
+                transform.position = position2;
+                break;
+            case 3:
+                transform.position = position3;
+                break;
+            case 4:
+                transform.position = position4;
+                break;
+            }
+    }
+
 }
