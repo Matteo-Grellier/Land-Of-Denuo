@@ -4,30 +4,14 @@ on:
     branches:
       - Github-Actions
       - main
-      - 'releases/*'
 
 jobs:
   check-commit-message:
     name: Check Commit Message
-    runs-on: ubuntu-latest
     steps:
       - name: Check Commit Type
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: '\[[^]]+\] .+$'
+          pattern: 'fix: |feat: |test: |refactor: |BREAKING CHANGE: '
           flags: 'gm'
-          error: 'Your first line has to contain a commit type like "[BUGFIX]".'
-      - name: Check Line Length
-        uses: gsactions/commit-message-checker@v1
-        with:
-          pattern: '^[^#].{74}'
-          error: 'The maximum line length of 74 characters is exceeded.'
-          excludeDescription: 'true' # optional: this excludes the description body of a pull request
-          excludeTitle: 'true' # optional: this excludes the title of a pull request
-          checkAllCommitMessages: 'true' # optional: this checks all commits associated with a pull request
-          accessToken: ${{ secrets.GITHUB_TOKEN }} # github access token is only required if checkAllCommitMessages is true
-      - name: Check for Resolves / Fixes
-        uses: gsactions/commit-message-checker@v1
-        with:
-          pattern: '^.+(Resolves|Fixes): \#[0-9]+$'
-          error: 'You need at least one "Resolves|Fixes: #<issue number>" line.'
+          error: 'Your first line has to contain a commit type like "fix: ".'
