@@ -2,8 +2,7 @@ name: 'Commit Message Check'
 on:
   push:
     branches:
-      - Github-Actions
-      - main
+      - "*"
 
 jobs:
   check-commit-message:
