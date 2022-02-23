@@ -8,9 +8,9 @@ on:
 jobs:
   check-commit-message:
     name: Check Commit Message
+    runs-on: ubuntu-latest
     steps:
       - name: Check Commit Type
-        runs-on: ubuntu-latest
         uses: gsactions/commit-message-checker@v1
         with:
           pattern: 'fix: |feat: |test: |refactor: |BREAKING CHANGE: |docs: |non-important-change: '
