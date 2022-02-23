@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04374da4cfcb6f0488e8bcab9ee839a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsParent: {fileID: 0}
+  itemsParent: {fileID: 1864273388}
 --- !u!1001 &501036057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5387,6 +5387,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864273388}
     m_Modifications:
+    - target: {fileID: 3725067681801494502, guid: a99a0531c62dba0458c365bf5b894b1c, type: 3}
+      propertyPath: m_IgnoreParentGroups
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4191323797264314782, guid: a99a0531c62dba0458c365bf5b894b1c, type: 3}
       propertyPath: m_Name
       value: InventorySlot
@@ -5475,5 +5479,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6165356176917814964, guid: a99a0531c62dba0458c365bf5b894b1c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 1796111972}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a99a0531c62dba0458c365bf5b894b1c, type: 3}
