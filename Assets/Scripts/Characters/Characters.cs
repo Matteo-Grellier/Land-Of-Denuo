@@ -5,7 +5,7 @@ using UnityEngine;
 public class Characters : MonoBehaviour
 {
     
-    //propriétés d'un personnage
+    //propriï¿½tï¿½s d'un personnage
     protected int maxHealth = 100;
     protected int health = 100;
     float defense = 0;
@@ -55,6 +55,6 @@ public class Characters : MonoBehaviour
     
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speedMovement * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement.normalized * speedMovement * Time.fixedDeltaTime);
     }
 }

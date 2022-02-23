@@ -57,7 +57,7 @@ public class Ennemies : Characters
         }
     }
 
-    public void moveEnemy(Vector2 p)
+    public void moveEnemy(Vector2 targetPosition)
     {
         //Debug.Log(Player.Instance.transform.position.x - transform.position.x);
         //movement = new Vector2(Player.transform.position.x, Player.transform.position.y);
@@ -65,9 +65,22 @@ public class Ennemies : Characters
         //Debug.Log(Player.Instance.transform.position.x - transform.position.x);
         //Debug.Log(Player.Instance.transform.position.y - transform.position.y);
 
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, speedMovement * Time.deltaTime);
+        
+        Vector2 distance = new Vector2(targetPosition.x - transform.position.x , targetPosition.y - transform.position.y);
+        // Debug.Log("######" + distance.x + " " + distance.y);
 
+        if ( Mathf.Abs(distance.x) > Mathf.Abs(distance.y) )
+        {
+            Debug.Log("###### Horizontal");
+            animator.SetFloat("Horizontal", distance.x);
+        }
+        else 
+        {
+            Debug.Log("###### Vertical");
+            animator.SetFloat("Vertical", distance.y);
+        }
 
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, p.y), speedMovement * Time.deltaTime);
         //if (p.x - transform.position.x == 0)
         //{
         //    animator.SetFloat("Horizontal", p.x);
@@ -81,34 +94,6 @@ public class Ennemies : Characters
         //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, transform.position.y), speedMovement * Time.deltaTime);
         //}
 
-        //if (p.x > transform.position.x)
-        //{
-        //    movement.x = 1;
-        //} else if (p.x < transform.position.x)
-        //{
-        //    movement.x = -1;
-        //} else if (p.y > transform.position.y)
-        //{
-        //    movement.y = 1;
-        //}
-        //else if (p.y < transform.position.y)
-        //{
-        //    movement.y = -1;
-        //}
-
-
-        //if (Player.Instance.transform.position.x - GameObject.Find("Enemy").transform.position.x > 0 && Player.Instance.transform.position.y - GameObject.Find("Enemy").transform.position.y > 0)
-        //{
-        //    movement = new Vector2(0.5f, 0.5f);
-        //    rb.MovePosition(rb.position + (speedMovement * Time.fixedDeltaTime * movement));
-        //}
     }
 
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (other.name == "Player")
-    //    {
-    //        checkTrigger = false;
-    //    }
-    //}
 }
