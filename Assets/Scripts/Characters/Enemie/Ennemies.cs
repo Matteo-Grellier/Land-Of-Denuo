@@ -16,6 +16,7 @@ public class Ennemies : Characters
     private bool findTarget;
     private Vector2 moveDirection;
     private State state;
+    public Rigidbody2D target;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class Ennemies : Characters
                 FindTarget();
                 break;
             case State.chaseTarget:
-                moveEnemy(rb.transform.position); //RigidBody du player
+                moveEnemy(target.transform.position); //RigidBody du player
                 break;
             default:    
                 break;
@@ -50,7 +51,7 @@ public class Ennemies : Characters
 
     private void FindTarget()
     {
-        if (Vector2.Distance(transform.position, rb.transform.position) < targetRange)
+        if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
         {
             state = State.chaseTarget;
         }
