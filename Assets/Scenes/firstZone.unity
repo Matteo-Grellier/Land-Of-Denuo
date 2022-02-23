@@ -618,7 +618,9 @@ MonoBehaviour:
     m_Bits: 513
   target: {fileID: 0}
   attackRange: 1
-  attackDamage: 40
+  attackDamage: 20
+  attackRate: 2
+  nextAttackTime: 0
 --- !u!95 &1320514749
 Animator:
   serializedVersion: 3

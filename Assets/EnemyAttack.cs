@@ -14,14 +14,22 @@ public class EnemyAttack : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 10;
 
+    public float attackRate = 2f;
+    public float nextAttackTime = 0f;
+
 
 
     void Update()
     {
-        if (target = GameObject.FindGameObjectWithTag("Player"))
+        if (Time.time >= nextAttackTime)
         {
-            Attack();
+            if (target = GameObject.FindGameObjectWithTag("Player"))
+            {
+                Attack();
+                nextAttackTime = Time.time + 1f / attackRate;
+            }
         }
+        
     }
 
     void Attack()
