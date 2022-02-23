@@ -13,6 +13,7 @@ public class Enemy : Characters
     private bool moving;
     public float timeBetweenMove;
     private Vector3 moveDirection;
+    public int IDamageable;
 
 
 
@@ -26,7 +27,8 @@ public class Enemy : Characters
 
     void Update()
     {
-        moveEnemy();
+        
+
     }
 
 
@@ -56,20 +58,4 @@ public class Enemy : Characters
         //    rb.MovePosition(rb.position + (speedMovement * Time.fixedDeltaTime * movement));
         //}
     }
-
-    //void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.name == "Player")
-    //    {
-    //        checkTrigger = true;
-    //    }
-    //}
-
-    //void OnTriggerExit2D(Collider2D other)
-    //{
-    //    if (other.name == "Player")
-    //    {
-    //        checkTrigger = false;
-    //    }
-    //}
 }
