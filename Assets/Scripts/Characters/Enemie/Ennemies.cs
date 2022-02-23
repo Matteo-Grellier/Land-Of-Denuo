@@ -65,18 +65,21 @@ public class Ennemies : Characters
         //Debug.Log(Player.Instance.transform.position.x - transform.position.x);
         //Debug.Log(Player.Instance.transform.position.y - transform.position.y);
 
-        if (p.x - transform.position.x == 0)
-        {
-            animator.SetFloat("Horizontal", p.x);
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, p.y), speedMovement * Time.deltaTime);
-        }
-        else
-        {
-            animator.SetFloat("Vertical", p.y);
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, transform.position.y), speedMovement * Time.deltaTime);
-        }
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, p.y), speedMovement * Time.deltaTime);
+        //if (p.x - transform.position.x == 0)
+        //{
+        //    animator.SetFloat("Horizontal", p.x);
+
+        //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, p.y), speedMovement * Time.deltaTime);
+        //}
+        //else
+        //{
+        //    animator.SetFloat("Vertical", p.y);
+
+        //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, transform.position.y), speedMovement * Time.deltaTime);
+        //}
 
         //if (p.x > transform.position.x)
         //{

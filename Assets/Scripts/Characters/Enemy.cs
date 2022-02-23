@@ -38,18 +38,18 @@ public class Enemy : Characters
         Debug.Log(target.transform.position.x - Ennemies.transform.position.x);
         Debug.Log(target.transform.position.y - Ennemies.transform.position.y);
 
-        if (target.transform.position.x - Ennemies.transform.position.x == 0)
-        {
-            animator.SetFloat("Horizontal", target.transform.position.x);
+        //if (target.transform.position.x - Ennemies.transform.position.x == 0)
+        //{
+        //    animator.SetFloat("Horizontal", target.transform.position.x);
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, target.transform.position.y), speedMovement * Time.deltaTime);
-        }
-        else
-        {
-            animator.SetFloat("Vertical", target.transform.position.y);
+        //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x, target.transform.position.y), speedMovement * Time.deltaTime);
+        //}
+        //else
+        //{
+        //    animator.SetFloat("Vertical", target.transform.position.y);
 
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speedMovement * Time.deltaTime);
-        }
+        //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(target.transform.position.x, transform.position.y), speedMovement * Time.deltaTime);
+        //}
         //if (target.transform.position.x - GameObject.Find("Enemy").transform.position.x > 0 && target.transform.position.y - GameObject.Find("Enemy").transform.position.y > 0)
         //{
         //    movement = new Vector2(0.5f, 0.5f);
