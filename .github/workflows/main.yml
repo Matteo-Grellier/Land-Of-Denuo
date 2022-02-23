@@ -10,8 +10,9 @@ jobs:
     name: Check Commit Message
     steps:
       - name: Check Commit Type
+        runs-on: ubuntu-latest
         uses: gsactions/commit-message-checker@v1
         with:
-          pattern: 'fix: |feat: |test: |refactor: |BREAKING CHANGE: '
+          pattern: 'fix: |feat: |test: |refactor: |BREAKING CHANGE: |docs: |non-important-change: '
           flags: 'gm'
           error: 'Your first line has to contain a commit type like "fix: ".'
