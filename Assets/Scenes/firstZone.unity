@@ -585,9 +585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMovement: 5
-  rb: {fileID: 793722473}
+  rb: {fileID: 1320514750}
   animator: {fileID: 1320514749}
   targetRange: 5
+  target: {fileID: 793722473}
 --- !u!95 &1320514749
 Animator:
   serializedVersion: 3
