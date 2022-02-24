@@ -61,29 +61,21 @@ public class Ennemies : Characters
     {
         //Debug.Log(Player.Instance.transform.position.x - transform.position.x);
         //movement = new Vector2(Player.transform.position.x, Player.transform.position.y);
-        //rb.MovePosition(rb.position + (movement * speedMovement * Time.fixedDeltaTime));
+        // rb.MovePosition(rb.position + (movement * speedMovement * Time.fixedDeltaTime));
         //Debug.Log(Player.Instance.transform.position.x - transform.position.x);
         //Debug.Log(Player.Instance.transform.position.y - transform.position.y);
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speedMovement * Time.deltaTime);
         
+        animator.SetFloat("Speed", (rb.position * speedMovement).magnitude);
+
+        Debug.Log("###" + (rb.position * speedMovement).magnitude ); 
+
         Vector2 distance = new Vector2(targetPosition.x - transform.position.x , targetPosition.y - transform.position.y);
         // Debug.Log("######" + distance.x + " " + distance.y);
 
-        if ( Mathf.Abs(distance.x) > Mathf.Abs(distance.y) )
-        {
-            Debug.Log("###### Horizontal = ");
-            animator.SetFloat("Horizontal", Mathf.Abs(distance.x));
-            animator.SetBool("HorizontaIsBigger", true);
-            
-        }
-        else 
-        {
-            Debug.Log("###### Vertical = ");
-            animator.SetFloat("Vertical", Mathf.Abs(distance.y));
-            animator.SetBool("HorizontaIsBigger", false);
-
-        }
+        animator.SetFloat("Horizontal", distance.x);
+        animator.SetFloat("Vertical", distance.y);
 
         //if (p.x - transform.position.x == 0)
         //{
