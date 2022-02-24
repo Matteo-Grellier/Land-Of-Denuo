@@ -7,6 +7,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 {
     private Canvas canvas;
 
+    private GameObject invObj;
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
 
@@ -14,7 +16,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas = GameObject.Find("Inventory").GetComponent<Canvas>();
+        invObj = GameObject.Find("Inventory");
     }
     public void OnBeginDrag(PointerEventData eventData)
     { 
@@ -28,7 +31,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         //throw new System.NotImplementedException();
         Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rectTransform.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -43,6 +46,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         //throw new System.NotImplementedException();
         Debug.Log("OnPointerDown");
+
+        //met l'index de l'actuel slot (celui que l'on veut interchanger) à celui du slot
+        InventorySlot.actualIndexSlot = this.GetComponentInParent<InventorySlot>().indexOfSlot;
+
+        Debug.Log(InventorySlot.actualIndexSlot);
     }
 
 }

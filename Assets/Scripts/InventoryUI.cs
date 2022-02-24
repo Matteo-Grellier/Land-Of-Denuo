@@ -10,6 +10,7 @@ public class InventoryUI : MonoBehaviour
 
     static InventorySlot[] slots; //static ajouté au fealing.
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +40,23 @@ public class InventoryUI : MonoBehaviour
         {
             if(i < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i]);
+                slots[i].AddItem(inventory.items[i], i);
             } else
             {
                 slots[i].ClearSlot();
             }
         }
+    }
+
+    public void SwapItemsUI(int actualSlot, int requestSlot)
+    {
+        //échange de la place dans le tableau, des items.
+        (inventory.items[actualSlot], inventory.items[requestSlot]) = (inventory.items[requestSlot], inventory.items[actualSlot]);
+
+        //remise à zero de la position de l'item de base.
+        slots[actualSlot].icon.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+
+        //mise à jour de l'UI.
+        UpdateUI();
     }
 }
