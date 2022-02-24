@@ -73,12 +73,12 @@ public class Ennemies : Characters
         if ( Mathf.Abs(distance.x) > Mathf.Abs(distance.y) )
         {
             Debug.Log("###### Horizontal");
-            animator.SetFloat("Horizontal", distance.x);
+            animator.SetFloat("Horizontal", Mathf.Abs(distance.x));
         }
         else 
         {
             Debug.Log("###### Vertical");
-            animator.SetFloat("Vertical", distance.y);
+            animator.SetFloat("Vertical", Mathf.Abs(distance.y));
         }
 
         //if (p.x - transform.position.x == 0)
