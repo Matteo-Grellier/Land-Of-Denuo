@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 793722470}
   - component: {fileID: 793722474}
   - component: {fileID: 793722475}
+  - component: {fileID: 793722476}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -401,6 +402,18 @@ MonoBehaviour:
     m_Bits: 3072
   attackRange: 1
   attackDamage: 40
+--- !u!114 &793722476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793722469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c835bc81500b44b8d95596cadd587e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1277620575
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,12 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e87a10afe08e554a93cc56bf93a530d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 2
-  rb: {fileID: 1320514750}
-  animator: {fileID: 1320514749}
-  target: {fileID: 793722469}
-  Ennemies: {fileID: 1320514747}
-  timeBetweenMove: 0
 --- !u!1 &2038611796
 GameObject:
   m_ObjectHideFlags: 0

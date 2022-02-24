@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class Player : Characters
 {
+
+    public enum State
+	{
+        isFishing,
+        isNotFishing
+	}
+
     protected Vector2 direction;
     public Animator animator;
+    public static State state;
+    int time_remaining;
+    public static float elapsedTime;
+    public static int startTime;
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        state = State.isNotFishing;
+        time_remaining = (int)Random.Range(5, 10);
     }
 
     // Update is called once per frame
     void Update()
     {
+        startTime = (int)Time.time;
+
+
         this.movement.x = Input.GetAxisRaw("Horizontal");
         this.movement.y = Input.GetAxisRaw("Vertical");
 
@@ -28,6 +43,15 @@ public class Player : Characters
             animator.SetFloat("PreviousHorizontal", movement.x);
             animator.SetFloat("PreviousVertical", movement.y);
         }
+
+        if (Input.GetKeyDown(KeyCode.E) || state == State.isFishing)
+        {
+            
+            elapsedTime += Time.deltaTime;
+
+
+            state = State.isFishing;
+            Fishing.Is_fishing_sucessfull(time_remaining);
+        }
     }
-    
 }

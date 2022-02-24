@@ -5,12 +5,11 @@ using UnityEngine;
 public class Characters : MonoBehaviour
 {
     
-    //propriétés d'un personnage
+    //propriï¿½tï¿½s d'un personnage
     protected int maxHealth = 100;
     protected int health = 100;
     float defense = 0;
     float damage = 0;
-
     //mouvement d'un personnage
     protected Vector2 movement = new Vector2();
     public float speedMovement = 5f;
@@ -27,7 +26,6 @@ public class Characters : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
     }
 
     public void TakeDamage(int damage)
@@ -55,6 +53,14 @@ public class Characters : MonoBehaviour
     
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * speedMovement * Time.fixedDeltaTime);
+        if (Player.state == Player.State.isFishing)
+        {
+
+        }
+        else {
+            rb.MovePosition(rb.position + movement * speedMovement * Time.fixedDeltaTime);
+        }
+
+        
     }
 }

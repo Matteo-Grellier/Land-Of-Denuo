@@ -8,7 +8,6 @@ public class Ennemies : Characters
     {
         Waiting,
         chaseTarget,
-
     }
 
     public Animator animator;
