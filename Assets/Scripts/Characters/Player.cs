@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Characters
 {
-
     public enum State
 	{
         isFishing,
@@ -29,14 +28,18 @@ public class Player : Characters
     void Update()
     {
         startTime = (int)Time.time;
-
-
-        this.movement.x = Input.GetAxisRaw("Horizontal");
-        this.movement.y = Input.GetAxisRaw("Vertical");
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        if (Player.state == Player.State.isFishing)
+        {}
+        else
+        {
+            this.movement.x = Input.GetAxisRaw("Horizontal");
+            this.movement.y = Input.GetAxisRaw("Vertical");
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+        }
+            
+        
 
         if(movement.x != 0 && movement.y == 0 || movement.x == 0 && movement.y != 0)
         {
@@ -45,13 +48,18 @@ public class Player : Characters
         }
 
         if (Input.GetKeyDown(KeyCode.E) || state == State.isFishing)
-        {
-            
+        {   
             elapsedTime += Time.deltaTime;
-
-
             state = State.isFishing;
             Fishing.Is_fishing_sucessfull(time_remaining);
         }
     }
+
+    Vector3Int GetTilePosition()
+    {
+        Vector3Int tPos = grid.WorldToCell(rb.transform.position);
+        Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
+        return tPos;
+    }
+
 }

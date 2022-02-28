@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Characters : MonoBehaviour
 {
     
-    //propri�t�s d'un personnage
+    //propriétés d'un personnage
     protected int maxHealth = 100;
     protected int health = 100;
     float defense = 0;
@@ -13,7 +14,8 @@ public class Characters : MonoBehaviour
     //mouvement d'un personnage
     protected Vector2 movement = new Vector2();
     public float speedMovement = 5f;
-
+    public Grid grid;
+    public Tilemap tilemap;
     public Rigidbody2D rb;
     
 

@@ -19,6 +19,7 @@ public class Fishing : Player
             Debug.Log("Pêche echouée, le poisson c'est enfuie");
             state = State.isNotFishing;
             resetDisplay();
+            
             elapsedTime = 0;
         }
         else
@@ -34,7 +35,7 @@ public class Fishing : Player
                 state = State.isNotFishing;
                 resetDisplay();
             }
-            else if(elapsedTime < 2.0 && elapsedTime > 1 && Input.GetKeyDown(KeyCode.E))
+            else if(elapsedTime > 0.1 && elapsedTime < time_remaining && Input.GetKeyDown(KeyCode.E))
             {
                 Debug.Log("Pêche échouée, tu as appuyé trop tôt !!");
                 state = State.isNotFishing;
