@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Player : Characters
 {
     public enum State
-	{
+    {
         isFishing,
         isNotFishing
-	}
+    }
+
+    float facingX = 0;
+    float facingY = 0;
+
 
     protected Vector2 direction;
     public Animator animator;
@@ -16,19 +21,30 @@ public class Player : Characters
     int time_remaining;
     public static float elapsedTime;
     public static int startTime;
+    static int facingDirection = 0;
+
+    string tileName;
+    //for scene transition purpose 
+    public static int lastTakenTpNumber;
+    
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
         state = State.isNotFishing;
         time_remaining = (int)Random.Range(5, 10);
+        SpawnTP();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // if the player has do a new input, change the variable value.
+        getTileName();
         startTime = (int)Time.time;
-        if (Player.state == Player.State.isFishing)
+        if (state == State.isFishing)
         {}
         else
         {
@@ -47,7 +63,7 @@ public class Player : Characters
             animator.SetFloat("PreviousVertical", movement.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) || state == State.isFishing)
+        if (Input.GetKeyDown(KeyCode.E) && getTileName() == "AWater_pipo_60" || state == State.isFishing )
         {   
             elapsedTime += Time.deltaTime;
             state = State.isFishing;
@@ -55,11 +71,48 @@ public class Player : Characters
         }
     }
 
-    Vector3Int GetTilePosition()
+    string getTileName()
     {
-        Vector3Int tPos = grid.WorldToCell(rb.transform.position);
-        Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
-        return tPos;
+        Vector3 positionToVerify;
+        //Debug.Log("Axis : " + this.movement.x);
+        //Debug.Log(tileName);
+        //Debug.Log("player position : " + tPos);
+        
+        positionToVerify = new Vector3(rb.transform.position.x + 1, rb.transform.position.y, rb.transform.position.z);
+        Vector3Int tPos = grid.WorldToCell(positionToVerify);
+        if (tilemap.GetTile(tPos) != null)
+        { 
+            tileName = tilemap.GetTile(tPos).name;
+            //Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
+        }
+        else
+        {
+            tileName = "null";
+        }
+        return tileName;
+    }
+
+    //To spawn the player at the good spot depending on wich teleporter he took
+    void SpawnTP() {
+        Vector3 position1 = new Vector3(0.06f, -3.12f, 0.0f);
+        Vector3 position2 = new Vector3(6.49f, -2.76f, 0.0f);
+        Vector3 position3 = new Vector3(8.78f, 0.06f, 0.0f);
+        Vector3 position4 = new Vector3(-8.21f, 1.86f, 0.0f);
+
+        switch(lastTakenTpNumber) {
+            case 1:
+                transform.position = position1;
+                break;
+            case 2:
+                transform.position = position2;
+                break;
+            case 3:
+                transform.position = position3;
+                break;
+            case 4:
+                transform.position = position4;
+                break;
+            }
     }
 
 }
