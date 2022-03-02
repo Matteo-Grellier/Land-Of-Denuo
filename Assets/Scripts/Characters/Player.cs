@@ -71,6 +71,11 @@ public class Player : Characters
         }
     }
 
+    protected void DamagePlayer()
+    {
+    
+    }
+
     string getTileName()
     {
         Vector3 positionToVerify;
