@@ -66,16 +66,23 @@ public class Ennemies : Characters
         //Debug.Log(Player.Instance.transform.position.y - transform.position.y);
 
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speedMovement * Time.deltaTime);
-        
-        animator.SetFloat("Speed", (rb.position * speedMovement).magnitude);
-
-        Debug.Log("###" + (rb.position * speedMovement).magnitude ); 
 
         Vector2 distance = new Vector2(targetPosition.x - transform.position.x , targetPosition.y - transform.position.y);
         // Debug.Log("######" + distance.x + " " + distance.y);
+        float flatDistance = (Mathf.Abs(distance.x) + Mathf.Abs(distance.y));
+
+        //pas propre mais fonctionel : je prend la distance entre la target et lui plutot que la vitesse haha good luck au gars qui essaie de regler ça ^^
+        animator.SetFloat("Distance", flatDistance); // animator.SetFloat("Speed", (rb.position * speedMovement).magnitude);
+        Debug.Log("Distance = " + flatDistance );
 
         animator.SetFloat("Horizontal", distance.x);
         animator.SetFloat("Vertical", distance.y);
+
+        if ( flatDistance > 10 )
+        {
+            state = State.Waiting;
+            animator.SetFloat("Distance", 0f);
+        }
 
         //if (p.x - transform.position.x == 0)
         //{
