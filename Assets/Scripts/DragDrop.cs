@@ -40,6 +40,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         Debug.Log("OnEndsDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        rectTransform.anchoredPosition = new Vector2(0, 0); //si l'élément est laché dans le vide alors remise à zero.
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -49,6 +51,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         //met l'index de l'actuel slot (celui que l'on veut interchanger) à celui du slot
         InventorySlot.actualIndexSlot = this.GetComponentInParent<InventorySlot>().indexOfSlot;
+
+        //transform.parent.SetAsLastSibling();
 
         Debug.Log(InventorySlot.actualIndexSlot);
     }

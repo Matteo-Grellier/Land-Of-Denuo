@@ -11,6 +11,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public int indexOfSlot;
 
+    public bool isDeleteSlot = false;
+
     static public int actualIndexSlot;
     static int requestSwapSlot;
 
@@ -30,11 +32,21 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         this.indexOfSlot = -1;
 
         icon.sprite = null;
-        icon.enabled = false;
+
+        if(!isDeleteSlot)
+        {
+            icon.enabled = false;
+        }
     }
 
     public void OnDrop(PointerEventData eventData)
     {
+
+        if(isDeleteSlot)
+        {
+            transform.parent.GetComponentInParent<InventoryUI>().DeleteItemsUI(actualIndexSlot);
+        }
+
         //throw new System.NotImplementedException();
         Debug.Log("OnDrop");
 
