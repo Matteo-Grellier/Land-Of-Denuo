@@ -62,7 +62,7 @@ public class Player : Characters
             animator.SetFloat("PreviousHorizontal", movement.x);
             animator.SetFloat("PreviousVertical", movement.y);
         }
-
+        Debug.Log(getTileName());
         if (Input.GetKeyDown(KeyCode.E) && getTileName() == "AWater_pipo_60" || state == State.isFishing )
         {   
             elapsedTime += Time.deltaTime;
@@ -83,7 +83,7 @@ public class Player : Characters
         if (tilemap.GetTile(tPos) != null)
         { 
             tileName = tilemap.GetTile(tPos).name;
-            //Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
+            Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
         }
         else
         {
