@@ -62,7 +62,7 @@ public class Player : Characters
             animator.SetFloat("PreviousHorizontal", movement.x);
             animator.SetFloat("PreviousVertical", movement.y);
         }
-        Debug.Log(getTileName());
+        //Debug.Log(getTileName());
         if (Input.GetKeyDown(KeyCode.E) && getTileName() == "AWater_pipo_60" || state == State.isFishing )
         {   
             elapsedTime += Time.deltaTime;

@@ -201,6 +201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4519e80933e7cf4fb2f4f3e0a1cad74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMovement: 5
+  grid: {fileID: 1730722748}
+  tilemap: {fileID: 1780465654}
   rb: {fileID: 128181525}
   animator: {fileID: 128181523}
 --- !u!50 &128181525

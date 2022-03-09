@@ -50,7 +50,7 @@ public class Ennemies : Characters
 
     private void FindTarget()
     {
-        if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
+        if (Vector2.Distance(transform.position, target.transform.position) < targetRange && Vector2.Distance(transform.position, target.transform.position) > 1.5f )
         {
             state = State.chaseTarget;
         }
@@ -76,7 +76,7 @@ public class Ennemies : Characters
         animator.SetFloat("Horizontal", distance.x);
         animator.SetFloat("Vertical", distance.y);
 
-        if ( flatDistance > targetRange * 2 )
+        if ( flatDistance > targetRange * 2 || flatDistance <= 1.5f)
         {
             state = State.Waiting;
             animator.SetFloat("Distance", 0f);
