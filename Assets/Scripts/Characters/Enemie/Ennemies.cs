@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Ennemies : Characters
 {
-    private enum State
+    public enum State
     {
         Waiting,
         chaseTarget,
+        Attack,
     }
 
     public Animator animator;
     public float targetRange = 5f;
     private bool findTarget;
     private Vector2 moveDirection;
-    private State state;
+    public State state;
     public Rigidbody2D target;
 
     private void Awake()
@@ -42,6 +43,9 @@ public class Ennemies : Characters
             case State.chaseTarget:
                 moveEnemy(target.transform.position); //RigidBody du player
                 break;
+            case State.Attack:
+                Attack();
+                break;
             default:    
                 break;
         }
@@ -51,6 +55,14 @@ public class Ennemies : Characters
     private void FindTarget()
     {
         if (Vector2.Distance(transform.position, target.transform.position) < targetRange && Vector2.Distance(transform.position, target.transform.position) > 1.5f )
+        {
+            state = State.chaseTarget;
+        }
+    }
+
+    private void Attack()
+    {
+        if ( Vector2.Distance(transform.position, target.transform.position) > targetRange )
         {
             state = State.chaseTarget;
         }
@@ -76,10 +88,14 @@ public class Ennemies : Characters
         animator.SetFloat("Horizontal", distance.x);
         animator.SetFloat("Vertical", distance.y);
 
-        if ( flatDistance > targetRange * 2 || flatDistance <= 1.5f)
+        if ( flatDistance > targetRange * 2 )
         {
             state = State.Waiting;
             animator.SetFloat("Distance", 0f);
+        }
+        else if (flatDistance <= 1.5f) 
+        {
+            state = State.Attack;
         }
 
         //if (p.x - transform.position.x == 0)
@@ -94,7 +110,6 @@ public class Ennemies : Characters
 
         //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, transform.position.y), speedMovement * Time.deltaTime);
         //}
-
     }
 
 }
