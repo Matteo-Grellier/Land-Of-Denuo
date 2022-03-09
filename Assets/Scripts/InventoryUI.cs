@@ -9,6 +9,8 @@ public class InventoryUI : MonoBehaviour
     public static bool inventoryIsOpen = false;
     public GameObject inventoryUI;
 
+    public int offsetIndexToDisplay = 0;
+
     Inventory inventory;
 
     static InventorySlot[] slots; //static ajouté au fealing.
@@ -50,9 +52,10 @@ public class InventoryUI : MonoBehaviour
 
         for(int i = 0; i < slots.Length; i++)
         {
-            if(i < inventory.items.Count)
+
+            if(i+ offsetIndexToDisplay < inventory.items.Count)
             {
-                slots[i].AddItem(inventory.items[i], i);
+                slots[i].AddItem(inventory.items[i+offsetIndexToDisplay], i);
             } else
             {
                 slots[i].ClearSlot();
@@ -99,5 +102,31 @@ public class InventoryUI : MonoBehaviour
     {
         inventoryUI.SetActive(false);
         inventoryIsOpen = false;
+    }
+
+    public void ToPreviousInventoryPage()
+    {
+        if(offsetIndexToDisplay > 0)
+        {
+            offsetIndexToDisplay -= 20;
+        }else
+        {
+            return;
+        }
+
+        UpdateUI();
+    }
+
+    public void ToNextInventoryPage()
+    {
+        if(offsetIndexToDisplay < slots.Length)
+        {
+            offsetIndexToDisplay += 20;
+        } else
+        {
+            return;
+        }
+
+        UpdateUI();
     }
 }
