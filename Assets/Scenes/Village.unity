@@ -9773,7 +9773,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601986645}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.61, y: -1.7, z: -12.339385}
+  m_LocalPosition: {x: 13.46, y: -8.71, z: -12.339385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -40747,7 +40747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940779096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.61, y: -1.7, z: -12.339385}
+  m_LocalPosition: {x: 13.46, y: -8.71, z: -12.339385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1739992403}
@@ -76366,8 +76366,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4519e80933e7cf4fb2f4f3e0a1cad74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMovement: 5
   rb: {fileID: 1810031500}
+  tilename: 
+  positionToVerify: {x: 0, y: 0, z: 0}
   animator: {fileID: 1810031498}
+  gridLayout: {fileID: 421690069}
 --- !u!50 &1810031500
 Rigidbody2D:
   serializedVersion: 4
@@ -76448,7 +76452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810031496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.61, y: -1.7, z: -2.339385}
+  m_LocalPosition: {x: 13.46, y: -8.71, z: -2.339385}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

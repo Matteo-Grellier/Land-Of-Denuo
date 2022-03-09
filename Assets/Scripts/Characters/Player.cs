@@ -14,20 +14,20 @@ public class Player : Characters
     float facingX = 0;
     float facingY = 0;
 
-
     protected Vector2 direction;
     public Animator animator;
     public static State state;
     int time_remaining;
     public static float elapsedTime;
     public static int startTime;
-    static int facingDirection = 0;
-
-    string tileName;
+    static string tileName = "";
+    
     //for scene transition purpose 
     public static int lastTakenTpNumber;
-    
-    
+    public Grid gridLayout;
+    public Tilemap Tilemap_blocking_object;
+    public Tile tile;
+    public Vector2Int location;
 
 
     // Start is called before the first frame update
@@ -41,8 +41,16 @@ public class Player : Characters
     // Update is called once per frame
     void Update()
     {
+        if(movement.x != 0 || movement.y != 0)
+        {
+            facingX = movement.x;
+            facingY = movement.y;
+            
+        }
+
+        ThereIsWater(facingX,facingY);
+
         // if the player has do a new input, change the variable value.
-        getTileName();
         startTime = (int)Time.time;
         if (state == State.isFishing)
         {}
@@ -62,8 +70,8 @@ public class Player : Characters
             animator.SetFloat("PreviousHorizontal", movement.x);
             animator.SetFloat("PreviousVertical", movement.y);
         }
-        Debug.Log(getTileName());
-        if (Input.GetKeyDown(KeyCode.E) && getTileName() == "AWater_pipo_60" || state == State.isFishing )
+
+        if (Input.GetKeyDown(KeyCode.E) && Tilemap_blocking_object.GetTile((Vector3Int)location) != null || state == State.isFishing )
         {   
             elapsedTime += Time.deltaTime;
             state = State.isFishing;
@@ -71,25 +79,48 @@ public class Player : Characters
         }
     }
 
-    string getTileName()
+    public string GetTileName(Vector2 pos)
     {
-        Vector3 positionToVerify;
-        //Debug.Log("Axis : " + this.movement.x);
-        //Debug.Log(tileName);
-        //Debug.Log("player position : " + tPos);
-        
-        positionToVerify = new Vector3(rb.transform.position.x + 1, rb.transform.position.y, rb.transform.position.z);
-        Vector3Int tPos = grid.WorldToCell(positionToVerify);
-        if (tilemap.GetTile(tPos) != null)
-        { 
-            tileName = tilemap.GetTile(tPos).name;
-            Debug.Log("name : " + tilemap.GetTile(tPos).name + " & position : " + tPos);
+        location = (Vector2Int)Tilemap_blocking_object.WorldToCell(pos);
+        if (Tilemap_blocking_object.GetTile((Vector3Int)location) == null)
+        {
+            return "";
         }
         else
         {
-            tileName = "null";
+            return Tilemap_blocking_object.GetTile((Vector3Int)location).name;
         }
-        return tileName;
+    }
+
+
+    public void ThereIsWater(float facingX, float facingY)
+    {
+        switch (facingX)
+        {
+            case 1:
+                positionToVerify = new Vector2(rb.transform.position.x + 1, rb.transform.position.y);
+                tilename = GetTileName(positionToVerify);
+                break;
+            case -1:
+                positionToVerify = new Vector2(rb.transform.position.x - 1, rb.transform.position.y);
+                tilename = GetTileName(positionToVerify);
+                break;
+            default:
+                break;
+        }
+        switch (facingY)
+        {
+            case 1:
+                positionToVerify = new Vector2(rb.transform.position.x, rb.transform.position.y + 1);
+                tilename = GetTileName(positionToVerify);
+                break;
+            case -1:
+                positionToVerify = new Vector2(rb.transform.position.x, rb.transform.position.y - 1);
+                tilename = GetTileName(positionToVerify);
+                break;
+            default:
+                break;
+        }
     }
 
     //To spawn the player at the good spot depending on wich teleporter he took
