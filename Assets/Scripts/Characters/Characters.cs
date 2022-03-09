@@ -14,14 +14,15 @@ public class Characters : MonoBehaviour
     //mouvement d'un personnage
     protected Vector2 movement = new Vector2();
     public float speedMovement = 5f;
-    public Grid grid;
-    public Tilemap tilemap;
     public Rigidbody2D rb;
-    
+    public string tilename = "";
+    public Vector3 positionToVerify;
+
 
     // Start is called before the first frame update
     void Start()
     {
+
         health = this.maxHealth;
     }
 
@@ -65,4 +66,6 @@ public class Characters : MonoBehaviour
 
         
     }
+
+    
 }
