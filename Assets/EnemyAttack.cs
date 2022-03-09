@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackRate = 2f;
     public float nextAttackTime = 0f;
 
-    public float stopAttackTime = 0f;
+    // public float stopAttackTime = 0f;
 
     void Update()
     {
@@ -25,21 +25,25 @@ public class EnemyAttack : MonoBehaviour
         {
             if (target = GameObject.FindGameObjectWithTag("Player"))
             {
-                if (ennemiesScript.state == Ennemies.State.Waiting)
+                if (ennemiesScript.state == Ennemies.State.Attack)
                 {
                     Attack();
                     nextAttackTime = Time.time + 1f / attackRate;
-                    stopAttackTime = Time.time + 1f;
+                    // stopAttackTime = Time.time + 1f;
                 }
             }
         }
         
-        if (Time.time >= stopAttackTime)
+        // if (Time.time >= stopAttackTime)
+        // {
+        //     if (animator.GetBool("Attack") == true ) 
+        //     {
+        //         animator.SetBool("Attack", false);
+        //     }
+        // }
+        if ( Vector2.Distance(transform.position, target.transform.position) > ennemiesScript.targetRange )
         {
-            if (animator.GetBool("Attack") == true ) 
-            {
-                animator.SetBool("Attack", false);
-            }
+            animator.SetBool("Attack", false);
         }
 
 
@@ -54,8 +58,8 @@ public class EnemyAttack : MonoBehaviour
             //animator.SetTrigger("Attack");
             animator.SetBool("Attack", true);
             player.GetComponent<Player>().TakeDamage(attackDamage);
-            stopAttackTime = Time.time + 1f;
-            //Debug.Log("We hit" + enemy.name);
+            // stopAttackTime = Time.time + 1f;
+            Debug.Log("HITING PLAYER");
         }
     }
 

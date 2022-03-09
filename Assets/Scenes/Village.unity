@@ -43017,10 +43017,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   target: {fileID: 1810031496}
-  attackRange: 0.5
-  attackDamage: 1
+  ennemiesScript: {fileID: 1376122824}
+  attackRange: 2
+  attackDamage: 10
   attackRate: 2
   nextAttackTime: 0
+--- !u!114 &1376122824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 542731638888933522, guid: 4b034e95f084abc40b266fc22ebbcdf8, type: 3}
+  m_PrefabInstance: {fileID: 1376122820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376122821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c98fafdea342c34ebd546c920ab8f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1376122828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 542731638888933528, guid: 4b034e95f084abc40b266fc22ebbcdf8, type: 3}
@@ -43050,7 +43062,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582374223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.068, y: 0.135, z: -2.339385}
+  m_LocalPosition: {x: 0, y: 0, z: -2.339385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1376122828}
