@@ -74,6 +74,11 @@ public class InventoryUI : MonoBehaviour
         {
             toolSlot.AddItem(inventory.toolUsed, -1);
         }
+
+        if(inventory.armorUsed != null)
+        {
+            armorSlot.AddItem(inventory.armorUsed, -1);
+        }
     }
 
     //peut-être déplacer la fonction dans Inventory.cs (car pas forcément lié à l'UI)

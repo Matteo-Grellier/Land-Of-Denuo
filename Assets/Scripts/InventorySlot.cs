@@ -73,6 +73,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         {
             Inventory.instance.toolUsed = (Tool) Inventory.instance.items[actualIndexSlot];
             //Pour mettre à jour l'UI, ça se fait au niveau de SwapItemsUI (plus bas)
+        } else if (typeOfSlot == TypeOfSlot.armorSlot && Inventory.instance.items[actualIndexSlot].GetType() == typeof(Armor)) // Sinon si le type du slot visé est "armorSlot" et que le type de l'item est un "Armor"
+        {
+            Inventory.instance.armorUsed = (Armor) Inventory.instance.items[actualIndexSlot];
+            //Pour mettre à jour l'UI, ça se fait au niveau de SwapItemsUI (plus bas)
         }
 
         //throw new System.NotImplementedException();

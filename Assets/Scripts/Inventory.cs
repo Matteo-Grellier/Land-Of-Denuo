@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
     public int space = 200;
 
     public Tool toolUsed;
+    public Armor armorUsed;
 
     public bool Add(Item item)
     {
