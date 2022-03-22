@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
+    public enum TypeOfSlot
+    {
+        inventorySlot,
+        deleteSlot,
+        toolSlot,
+        armorSlot
+    }
 
     public Image icon;
 
@@ -14,7 +21,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
     public int indexOfSlot;
 
-    public bool isDeleteSlot = false;
+    //public bool isDeleteSlot = false;
+    public TypeOfSlot typeOfSlot = TypeOfSlot.inventorySlot;
 
     static public int actualIndexSlot;
     static int requestSwapSlot;
@@ -31,7 +39,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         //récupérer TextMeshPro de l'autre enfant du parent.
         //Debug.Log(transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>());
         //transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item.itemsAmount.ToString();
-        if(!isDeleteSlot)
+        if(typeOfSlot == TypeOfSlot.inventorySlot)
         {
             numberOfEl.text = item.itemsAmount.ToString();
         }
@@ -47,7 +55,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 
         icon.sprite = null;
 
-        if(!isDeleteSlot)
+        if(typeOfSlot == TypeOfSlot.inventorySlot)
         {
             icon.enabled = false;
             numberOfEl.text = "";
@@ -57,9 +65,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
 
-        if(isDeleteSlot)
+        if(typeOfSlot == TypeOfSlot.deleteSlot)
         {
             transform.parent.GetComponentInParent<InventoryUI>().DeleteItemsUI(actualIndexSlot);
+
+        } else if (typeOfSlot == TypeOfSlot.toolSlot && Inventory.instance.items[actualIndexSlot].GetType() == typeof(Tool)) // Sinon si le type du slot visé est "toolSlot" et que le type de l'item est un "Tool"
+        {
+            Inventory.instance.toolUsed = (Tool) Inventory.instance.items[actualIndexSlot];
+            //Pour mettre à jour l'UI, ça se fait au niveau de SwapItemsUI (plus bas)
         }
 
         //throw new System.NotImplementedException();

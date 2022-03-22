@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
+    public Transform utilsSlot;
 
     public static bool inventoryIsOpen = false;
     public GameObject inventoryUI;
@@ -13,7 +14,10 @@ public class InventoryUI : MonoBehaviour
 
     Inventory inventory;
 
+    //Les éléments visuel de l'inventaire (les différentes cases de l'inventaire)
     static InventorySlot[] slots; //static ajouté au fealing.
+    static InventorySlot toolSlot;
+    static InventorySlot armorSlot;
 
 
     // Start is called before the first frame update
@@ -24,7 +28,11 @@ public class InventoryUI : MonoBehaviour
 
         Debug.Log(itemsParent.childCount);
 
-        slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+
+        //Récupérer les éléments enfants qui ont la propriété "InventorySlot" (donc qui sont des emplacements visuels)
+        slots = itemsParent.GetComponentsInChildren<InventorySlot>(); //Dans itemsParent on récupère tous les slots
+        toolSlot = utilsSlot.GetComponentsInChildren<InventorySlot>()[1]; //Dans utilsSlot on récupère l'emplacement pour les outils
+        armorSlot = utilsSlot.GetComponentsInChildren<InventorySlot>()[0]; //Dans utilsSlot on récupère l'emplacement pour l'armure.
 
         Debug.Log("I start in Start");
         Debug.Log(slots.Length);
@@ -61,6 +69,11 @@ public class InventoryUI : MonoBehaviour
                 slots[i].ClearSlot();
             }
         }
+
+        if(inventory.toolUsed != null)
+        {
+            toolSlot.AddItem(inventory.toolUsed, -1);
+        }
     }
 
     //peut-être déplacer la fonction dans Inventory.cs (car pas forcément lié à l'UI)
@@ -70,6 +83,7 @@ public class InventoryUI : MonoBehaviour
         if(requestSlot == -1)
         {
             slots[actualSlot].icon.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            UpdateUI();// Permet de mettre à jour dans le cas des outils et armures.
             return;
         }
 

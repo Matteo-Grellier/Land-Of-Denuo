@@ -154,7 +154,7 @@ MonoBehaviour:
   icon: {fileID: 4191323796714982544}
   numberOfEl: {fileID: 8417499826333420547}
   indexOfSlot: 0
-  isDeleteSlot: 0
+  typeOfSlot: 0
 --- !u!1 &4914999036344121641
 GameObject:
   m_ObjectHideFlags: 0

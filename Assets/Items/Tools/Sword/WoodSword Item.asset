@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9767808b3c537a74bb8b5190aa61fd44, type: 3}
+  m_Name: WoodSword Item
+  m_EditorClassIdentifier: 
+  itemsAmount: 1
+  name: Wood Sword
+  icon: {fileID: 21300000, guid: c0b2ac8774c56f64da2d651638f6f99d, type: 3}
+  isDefaultItem: 0
+  damage: 10
+  description: "Juste une simple \xE9p\xE9e en bois... Tu t'attendais \xE0 quoi ?"

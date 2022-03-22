@@ -50,8 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1608216112009015804}
+  numberOfEl: {fileID: 0}
   indexOfSlot: 0
   isDeleteSlot: 1
+  typeOfSlot: 1
 --- !u!1 &1608216112009015778
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
 
     public int space = 200;
 
+    public Tool toolUsed;
+
     public bool Add(Item item)
     {
         bool isAlreadyExist = false;
@@ -72,4 +74,9 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
+
+    //public void ToolUsed(Item item)
+    //{
+    //    toolUsed = item;
+    //}
 }
