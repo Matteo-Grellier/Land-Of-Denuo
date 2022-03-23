@@ -16,5 +16,6 @@ MonoBehaviour:
   name: Leather Armor
   icon: {fileID: 21300000, guid: 2ffe22f3f7e89564cbf7c0145c871283, type: 3}
   isDefaultItem: 0
+  typeOfItem: 3
   protection: 50
   description: You killed a cow for that thing?
