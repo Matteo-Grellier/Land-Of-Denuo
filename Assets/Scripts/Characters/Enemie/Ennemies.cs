@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Ennemies : Characters
 {
-    private enum State
+    public enum State
     {
         Waiting,
         chaseTarget,
+        Attack,
     }
 
     public Animator animator;
     public float targetRange = 5f;
     private bool findTarget;
     private Vector2 moveDirection;
-    private State state;
+    public State state;
     public Rigidbody2D target;
 
     private void Awake()
@@ -38,9 +39,15 @@ public class Ennemies : Characters
         {
             case State.Waiting:
                 FindTarget();
+                Debug.Log("STATE : WAITING");
                 break;
             case State.chaseTarget:
                 moveEnemy(target.transform.position); //RigidBody du player
+                Debug.Log("STATE : MOVING TO TARGET");
+                break;
+            case State.Attack:
+                Attack();
+                Debug.Log("STATE : ATTACK");
                 break;
             default:    
                 break;
@@ -50,7 +57,15 @@ public class Ennemies : Characters
 
     private void FindTarget()
     {
-        if (Vector2.Distance(transform.position, target.transform.position) < targetRange)
+        if (Vector2.Distance(transform.position, target.transform.position) < targetRange && Vector2.Distance(transform.position, target.transform.position) > 1.5f )
+        {
+            state = State.chaseTarget;
+        }
+    }
+
+    private void Attack()
+    {
+        if ( Vector2.Distance(transform.position, target.transform.position) > targetRange )
         {
             state = State.chaseTarget;
         }
@@ -81,6 +96,10 @@ public class Ennemies : Characters
             state = State.Waiting;
             animator.SetFloat("Distance", 0f);
         }
+        else if (flatDistance <= 1.5f) 
+        {
+            state = State.Attack;
+        }
 
         //if (p.x - transform.position.x == 0)
         //{
@@ -94,7 +113,6 @@ public class Ennemies : Characters
 
         //    transform.position = Vector2.MoveTowards(transform.position, new Vector2(p.x, transform.position.y), speedMovement * Time.deltaTime);
         //}
-
     }
 
 }
