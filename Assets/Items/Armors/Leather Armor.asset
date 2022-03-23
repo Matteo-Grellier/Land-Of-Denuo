@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f66403b6c155143b3efef2d261c39e, type: 3}
-  m_Name: Iron Item
+  m_Script: {fileID: 11500000, guid: 5891b0296c6c92749a1a458a03c2af0a, type: 3}
+  m_Name: Leather Armor
   m_EditorClassIdentifier: 
-  itemsAmount: 2
-  name: Iron
-  icon: {fileID: 21300000, guid: 29deb368d89dd0f429d2f2a4542d6f4c, type: 3}
+  itemsAmount: 1
+  name: Leather Armor
+  icon: {fileID: 21300000, guid: 2ffe22f3f7e89564cbf7c0145c871283, type: 3}
   isDefaultItem: 0
+  typeOfItem: 3
+  protection: 50
+  description: You killed a cow for that thing?
