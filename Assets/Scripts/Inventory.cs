@@ -28,17 +28,35 @@ public class Inventory : MonoBehaviour
 
     public int space = 200;
 
+    public Tool toolUsed;
+    public Armor armorUsed;
+
     public bool Add(Item item)
     {
-        if(!item.isDefaultItem)
+        bool isAlreadyExist = false;
+
+        Item copyItem = Instantiate(item);
+        int indexOfExistingElement = items.FindIndex(item => copyItem.name == item.name);
+
+        if(indexOfExistingElement > -1)
+        {
+            items[indexOfExistingElement].itemsAmount++;
+            isAlreadyExist = true;
+        }
+
+        if (!item.isDefaultItem)
         {
             if(items.Count >= space)
             {
                 Debug.Log("Not enough space.");
                 return false;
             }
-            items.Add(item);
 
+            if(!isAlreadyExist)
+            {
+                items.Add(item);
+            }
+            
             if(onItemChangedCallback != null)
             {
                 onItemChangedCallback.Invoke();
@@ -57,4 +75,9 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
     }
+
+    //public void ToolUsed(Item item)
+    //{
+    //    toolUsed = item;
+    //}
 }
