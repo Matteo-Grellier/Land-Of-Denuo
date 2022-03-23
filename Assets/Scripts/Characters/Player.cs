@@ -22,7 +22,7 @@ public class Player : Characters
     int time_remaining;
     public static float elapsedTime;
 
-    public Tilemap Tilemap_blocking_object;
+    public Tilemap TileMapWater;
     public string tilename = "";
 
     //for scene transition purpose 
@@ -49,8 +49,6 @@ public class Player : Characters
             
         }
 
-        ThereIsWater(facingX,facingY);
-
         if (state == State.isFishing)
         {}
         else
@@ -71,14 +69,19 @@ public class Player : Characters
         }
 
         //Mettre la condition de s'il y a la canne a pêche.
-        FishingTime();
+        if(TileMapWater != null)
+        {
+            ThereIsWater(facingX, facingY);
+            FishingTime();
+        }
+       
 
     }
 
     public void FishingTime()
     {
         //Si on appuie sur E et qu'il y a de l'eau (ou que l'état du joueur est "isFishing" d'où le fait qu'il rerentre a chaque fois qu'il est en isFishing)
-        if ((Input.GetKeyDown(KeyCode.E) && Tilemap_blocking_object.GetTile((Vector3Int)location) != null) || state == State.isFishing)
+        if ((Input.GetKeyDown(KeyCode.E) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
         {
             state = State.isFishing; // On met en isFishing (tant qu'il n'a pas fini).
 
@@ -91,14 +94,14 @@ public class Player : Characters
 
     public string GetTileName(Vector2 pos)
     {
-        location = (Vector2Int)Tilemap_blocking_object.WorldToCell(pos);
-        if (Tilemap_blocking_object.GetTile((Vector3Int)location) == null)
+        location = (Vector2Int)TileMapWater.WorldToCell(pos);
+        if (TileMapWater.GetTile((Vector3Int)location) == null)
         {
             return "";
         }
         else
         {
-            return Tilemap_blocking_object.GetTile((Vector3Int)location).name;
+            return TileMapWater.GetTile((Vector3Int)location).name;
         }
     }
 

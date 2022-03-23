@@ -48232,7 +48232,7 @@ MonoBehaviour:
   target: {fileID: 1810031496}
   ennemiesScript: {fileID: 1376122824}
   attackRange: 2
-  attackDamage: 10
+  attackDamage: 5
   attackRate: 2
   nextAttackTime: 0
 --- !u!114 &1376122824 stripped
@@ -73144,7 +73144,7 @@ MonoBehaviour:
   rb: {fileID: 1810031500}
   positionToVerify: {x: 0, y: 0, z: 0}
   animator: {fileID: 1810031498}
-  Tilemap_blocking_object: {fileID: 2116863156}
+  TileMapWater: {fileID: 2116863156}
   tilename: 
   gridLayout: {fileID: 0}
   tile: {fileID: 0}
@@ -73252,9 +73252,9 @@ MonoBehaviour:
   attackPoint: {fileID: 26988362}
   enemylayers:
     serializedVersion: 2
-    m_Bits: 0
-  attackRange: 0.5
-  attackDamage: 10
+    m_Bits: 1024
+  attackRange: 1.44
+  attackDamage: 40
 --- !u!1 &1811433075
 GameObject:
   m_ObjectHideFlags: 0
