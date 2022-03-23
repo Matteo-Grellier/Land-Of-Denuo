@@ -1,88 +1,37 @@
 ﻿using UnityEngine;
 
-public class Fishing : Player
+public class Fishing : MonoBehaviour
 {
-
-    static bool alreadyDisplayed0 = false;
-    static bool alreadyDisplayed1 = false;
-    static bool alreadyDisplayed2 = false;
-    static bool alreadyDisplayed3 = false;
-
-
-    static Player player = new Player();
-
-    public static void Is_fishing_sucessfull(int time_remaining)
+    public static void IsFishingSucessfull(int time_remaining)
     {
-        display(3);
-        if (time_remaining+5 <= elapsedTime)
+        //Si le temps est supérieur à la fourchette de temps pour pêcher = pêche échouée.
+        if (time_remaining+5 <= Player.elapsedTime)
         {
-            Debug.Log("Pêche echouée, le poisson c'est enfuie");
-            state = State.isNotFishing;
-            resetDisplay();
-            
-            elapsedTime = 0;
+            //Pêche echouée, le poisson c'est enfuie
+            Player.state = Player.State.isNotFishing;
+            Player.elapsedTime = 0;
         }
         else
         {
-            if (elapsedTime >= time_remaining && elapsedTime <= time_remaining + 5)
+            //Si le poisson mord
+            if (Player.elapsedTime >= time_remaining && Player.elapsedTime <= time_remaining + 5)
             {
-                display(0);
+                //Ici il y aura le message/l'animation du "poisson a mordu !"
             }
-            if (Input.GetKeyDown(KeyCode.E) && elapsedTime >= time_remaining && elapsedTime <= time_remaining + 2)
+
+            if (Input.GetKeyDown(KeyCode.E) && Player.elapsedTime >= time_remaining && Player.elapsedTime <= time_remaining + 2)
             {
-                display(2);
-                elapsedTime = 0;
-                state = State.isNotFishing;
-                resetDisplay();
+                //Si la pêche a réussi.
+                Player.elapsedTime = 0;
+                Player.state = Player.State.isNotFishing;
             }
-            else if(elapsedTime > 0.1 && elapsedTime < time_remaining && Input.GetKeyDown(KeyCode.E))
+            else if(Player.elapsedTime > 0.1 && Player.elapsedTime < time_remaining && Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Pêche échouée, tu as appuyé trop tôt !!");
-                state = State.isNotFishing;
-                resetDisplay();
-                elapsedTime = 0;
+                // Si la Pêche a échouée car APPUIE trop tôt.
+                Player.state = Player.State.isNotFishing;
+                Player.elapsedTime = 0;
             }
         }
         
-    }
-    public static void display(int id)
-    {
-        
-        switch (id)
-        {
-            case 0:
-                if (alreadyDisplayed0)
-                {
-                    break;
-                }
-                Debug.Log("le poisson a mordu");
-                alreadyDisplayed0 = true; 
-                break; 
-            case 2:
-                if (alreadyDisplayed2)
-                {
-                    break;
-                }
-                Debug.Log("Pêche réussi");
-                alreadyDisplayed2 = true; 
-                break;
-            case 3:
-                if (alreadyDisplayed3)
-                {
-                    break;
-                }
-                Debug.Log("La pêche à commencé");
-                alreadyDisplayed3 = true;
-                break;
-            default:
-                break;
-        }
-    }
-    public static void resetDisplay()
-    {
-        alreadyDisplayed0 = false;
-        alreadyDisplayed1 = false;
-        alreadyDisplayed2 = false;
-        alreadyDisplayed3 = false;
     }
 }

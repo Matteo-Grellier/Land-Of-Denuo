@@ -43295,7 +43295,7 @@ GameObject:
   - component: {fileID: 1669524980}
   - component: {fileID: 1669524979}
   m_Layer: 0
-  m_Name: Tilemap blocking object
+  m_Name: Tilemap_blocking_object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76530,7 +76530,11 @@ MonoBehaviour:
   tilename: 
   positionToVerify: {x: 0, y: 0, z: 0}
   animator: {fileID: 1810031498}
+  Tilemap_blocking_object: {fileID: 1669524983}
+  tilename: 
   gridLayout: {fileID: 421690069}
+  tile: {fileID: 0}
+  location: {x: 0, y: 0}
 --- !u!50 &1810031500
 Rigidbody2D:
   serializedVersion: 4
