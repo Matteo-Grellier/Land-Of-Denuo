@@ -11,21 +11,23 @@ public class Player : Characters
         isNotFishing
     }
 
+    //for fishing
     float facingX = 0;
     float facingY = 0;
 
     protected Vector2 direction;
     public Animator animator;
+
     public static State state;
     int time_remaining;
     public static float elapsedTime;
-    public static int startTime;
-    static string tileName = "";
-    
+
+    public Tilemap Tilemap_blocking_object;
+    public string tilename = "";
+
     //for scene transition purpose 
     public static int lastTakenTpNumber;
     public Grid gridLayout;
-    public Tilemap Tilemap_blocking_object;
     public Tile tile;
     public Vector2Int location;
 
@@ -34,7 +36,6 @@ public class Player : Characters
     void Start()
     {
         state = State.isNotFishing;
-        time_remaining = (int)Random.Range(5, 10);
         SpawnTP();
     }
 
@@ -50,8 +51,6 @@ public class Player : Characters
 
         ThereIsWater(facingX,facingY);
 
-        // if the player has do a new input, change the variable value.
-        startTime = (int)Time.time;
         if (state == State.isFishing)
         {}
         else
@@ -71,11 +70,22 @@ public class Player : Characters
             animator.SetFloat("PreviousVertical", movement.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && Tilemap_blocking_object.GetTile((Vector3Int)location) != null || state == State.isFishing )
-        {   
-            elapsedTime += Time.deltaTime;
-            state = State.isFishing;
-            Fishing.Is_fishing_sucessfull(time_remaining);
+        //Mettre la condition de s'il y a la canne a pêche.
+        FishingTime();
+
+    }
+
+    public void FishingTime()
+    {
+        //Si on appuie sur E et qu'il y a de l'eau (ou que l'état du joueur est "isFishing" d'où le fait qu'il rerentre a chaque fois qu'il est en isFishing)
+        if ((Input.GetKeyDown(KeyCode.E) && Tilemap_blocking_object.GetTile((Vector3Int)location) != null) || state == State.isFishing)
+        {
+            state = State.isFishing; // On met en isFishing (tant qu'il n'a pas fini).
+
+            time_remaining = (int)Random.Range(5, 10); //Temps d'attente avant que le poisson mordre (aléatoire).
+            elapsedTime += Time.deltaTime; // On ajoute une seconde de plus.
+            
+            Fishing.IsFishingSucessfull(time_remaining); // On vérifie que la pêche est une réussite ou un échec.
         }
     }
 

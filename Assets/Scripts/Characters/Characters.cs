@@ -15,7 +15,7 @@ public class Characters : MonoBehaviour
     protected Vector2 movement = new Vector2();
     public float speedMovement = 5f;
     public Rigidbody2D rb;
-    public string tilename = "";
+
     public Vector3 positionToVerify;
 
 
