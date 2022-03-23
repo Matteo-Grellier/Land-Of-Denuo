@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
 
 
     public float attackRange = 0.5f;
-    public int attackDamage = 10;
+    public float attackDamage = 0f;
 
     public float attackRate = 2f;
     public float nextAttackTime = 0f;
