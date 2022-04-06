@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public Transform attackPoint;
     public LayerMask playerlayers;
     public GameObject target;
-
+    public Ennemies ennemiesScript;
 
     public float attackRange = 0.5f;
     public float attackDamage = 0f;
@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
     public float attackRate = 2f;
     public float nextAttackTime = 0f;
 
-
+    // public float stopAttackTime = 0f;
 
     void Update()
     {
@@ -25,23 +25,41 @@ public class EnemyAttack : MonoBehaviour
         {
             if (target = GameObject.FindGameObjectWithTag("Player"))
             {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                if (ennemiesScript.state == Ennemies.State.Attack)
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    // stopAttackTime = Time.time + 1f;
+                }
             }
         }
         
+        // if (Time.time >= stopAttackTime)
+        // {
+        //     if (animator.GetBool("Attack") == true ) 
+        //     {
+        //         animator.SetBool("Attack", false);
+        //     }
+        // }
+        if ( Vector2.Distance(transform.position, target.transform.position) > ennemiesScript.targetRange )
+        {
+            animator.SetBool("Attack", false);
+        }
+
+
     }
 
     void Attack()
     {
-        animator.SetTrigger("Attack");
-
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerlayers);
 
         foreach (Collider2D player in hitPlayer)
         {
+            //animator.SetTrigger("Attack");
+            animator.SetBool("Attack", true);
             player.GetComponent<Player>().TakeDamage(attackDamage);
-            //Debug.Log("We hit" + enemy.name);
+            // stopAttackTime = Time.time + 1f;
+            Debug.Log("HITING PLAYER");
         }
     }
 
