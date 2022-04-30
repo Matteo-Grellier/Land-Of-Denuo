@@ -68,8 +68,8 @@ public class Ressource : MonoBehaviour
 
     void PopItem()
     {
-        GameObject bob = Instantiate(item, transform.position, transform.rotation);
-        bob.transform.position =  (Vector2)transform.position +(Random.insideUnitCircle * 3  );
+        GameObject itemIsntance = Instantiate(item, transform.position, transform.rotation);
+        itemIsntance.transform.position =  (Vector2)transform.position +(Random.insideUnitCircle * 3  );
     }
 
 
