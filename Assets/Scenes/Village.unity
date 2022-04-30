@@ -1176,11 +1176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2517316842827536203, guid: 879fd44cc11767e48af46d58460a4a51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.39
+      value: 11.59
       objectReference: {fileID: 0}
     - target: {fileID: 2517316842827536203, guid: 879fd44cc11767e48af46d58460a4a51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.08
+      value: -5.62
       objectReference: {fileID: 0}
     - target: {fileID: 2517316842827536203, guid: 879fd44cc11767e48af46d58460a4a51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11422,11 +11422,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4779576079816593789, guid: 3a0f956a34cf0e542a99c342872b7d86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.719743
+      value: 9.42
       objectReference: {fileID: 0}
     - target: {fileID: 4779576079816593789, guid: 3a0f956a34cf0e542a99c342872b7d86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -14.673771
+      value: -11.47
       objectReference: {fileID: 0}
     - target: {fileID: 4779576079816593789, guid: 3a0f956a34cf0e542a99c342872b7d86, type: 3}
       propertyPath: m_LocalPosition.z
@@ -73167,6 +73167,7 @@ MonoBehaviour:
   rb: {fileID: 1810031500}
   positionToVerify: {x: 0, y: 0, z: 0}
   animator: {fileID: 1810031498}
+  nextRessourceTime: 0
   TileMapWater: {fileID: 2116863156}
   tilename: 
   gridLayout: {fileID: 0}
@@ -73278,6 +73279,7 @@ MonoBehaviour:
     m_Bits: 1024
   attackRange: 1.44
   attackDamage: 40
+  nextAttackTime: 0
 --- !u!1 &1811433075
 GameObject:
   m_ObjectHideFlags: 0
