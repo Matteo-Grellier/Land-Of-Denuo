@@ -22,6 +22,8 @@ public class Player : Characters
     int time_remaining;
     public static float elapsedTime;
 
+    public float nextRessourceTime = 0f;
+
     public Tilemap TileMapWater;
     public string tilename = "";
 
@@ -59,8 +61,6 @@ public class Player : Characters
             animator.SetFloat("Vertical", movement.y);
             animator.SetFloat("Speed", movement.sqrMagnitude);
         }
-            
-        
 
         if(movement.x != 0 && movement.y == 0 || movement.x == 0 && movement.y != 0)
         {
@@ -68,27 +68,58 @@ public class Player : Characters
             animator.SetFloat("PreviousVertical", movement.y);
         }
 
-        //Mettre la condition de s'il y a la canne a pêche.
+        //Mettre la condition de s'il y a la canne a pï¿½che.
         if(TileMapWater != null)
         {
             ThereIsWater(facingX, facingY);
             FishingTime();
         }
+
+        if (Time.time >= nextRessourceTime){
+            
+            animator.SetBool("Pioche", false);
+            animator.SetBool("Hache", false);
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                GetRessources();
+            }
+        }
        
 
     }
 
+    void GetRessources()
+    {
+        Collider2D[] hiRessources = Physics2D.OverlapCircleAll(this.transform.position, 2, LayerMask.GetMask("Ressources"));
+
+        foreach (Collider2D GameObject in hiRessources)
+        {
+            if (GameObject.name == "tree")
+            {
+                animator.SetBool("Hache", true);
+                nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
+            }
+            else if (GameObject.name == "stone")
+            {
+                animator.SetBool("Pioche", true);
+                nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
+            }
+            
+        }
+    }
+
     public void FishingTime()
     {
-        //Si on appuie sur E et qu'il y a de l'eau (ou que l'état du joueur est "isFishing" d'où le fait qu'il rerentre a chaque fois qu'il est en isFishing)
+        //Si on appuie sur E et qu'il y a de l'eau (ou que l'ï¿½tat du joueur est "isFishing" d'oï¿½ le fait qu'il rerentre a chaque fois qu'il est en isFishing)
         if ((Input.GetKeyDown(KeyCode.E) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
         {
             state = State.isFishing; // On met en isFishing (tant qu'il n'a pas fini).
 
-            time_remaining = (int)Random.Range(5, 10); //Temps d'attente avant que le poisson mordre (aléatoire).
+            time_remaining = (int)Random.Range(5, 10); //Temps d'attente avant que le poisson mordre (alï¿½atoire).
             elapsedTime += Time.deltaTime; // On ajoute une seconde de plus.
             
-            Fishing.IsFishingSucessfull(time_remaining); // On vérifie que la pêche est une réussite ou un échec.
+            Fishing.IsFishingSucessfull(time_remaining); // On vï¿½rifie que la pï¿½che est une rï¿½ussite ou un ï¿½chec.
         }
     }
 
@@ -156,7 +187,7 @@ public class Player : Characters
             case 4:
                 transform.position = position4;
                 break;
-            }
+        }
     }
 
 }

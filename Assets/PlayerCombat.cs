@@ -12,21 +12,30 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 10;
 
+    public float nextAttackTime = 0f;
+
+
 
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Attack();
+        if (Time.time >= nextAttackTime){
+            
+            animator.SetBool("Attack", false);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Attack();
+            }
         }
     }
 
     void Attack()
     {
-        animator.SetTrigger("Attack");
+        animator.SetBool("Attack", true);
+        nextAttackTime = nextAttackTime = Time.time + 0.2f ;
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemylayers);
 

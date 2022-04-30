@@ -21,12 +21,16 @@ public class EnemyAttack : MonoBehaviour
 
     void Update()
     {
+
         if (Time.time >= nextAttackTime)
         {
+
             if (target = GameObject.FindGameObjectWithTag("Player"))
             {
+
                 if (ennemiesScript.state == Ennemies.State.Attack)
                 {
+
                     Attack();
                     nextAttackTime = Time.time + 1f / attackRate;
                     // stopAttackTime = Time.time + 1f;
@@ -52,6 +56,7 @@ public class EnemyAttack : MonoBehaviour
     void Attack()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerlayers);
+
 
         foreach (Collider2D player in hitPlayer)
         {
