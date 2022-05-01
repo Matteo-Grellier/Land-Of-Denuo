@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6f66403b6c155143b3efef2d261c39e, type: 3}
-  m_Name: Stone Item
+  m_Script: {fileID: 11500000, guid: 9767808b3c537a74bb8b5190aa61fd44, type: 3}
+  m_Name: Stone Sword Item
   m_EditorClassIdentifier: 
-  itemsAmount: 0
-  name: Stone
-  icon: {fileID: 21300000, guid: 9cacb66b24f6f3849924010ceef195d6, type: 3}
+  itemsAmount: 1
+  name: Stone Sword
+  icon: {fileID: 21300000, guid: f06fe3d8c73006c448e4fa2ef9ae8c5b, type: 3}
   isDefaultItem: 0
-  typeOfItem: 0
+  typeOfItem: 1
+  damage: 20
+  description: "Une \xE9p\xE9e en pierre..."
