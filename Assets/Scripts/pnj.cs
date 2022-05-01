@@ -5,6 +5,11 @@ using TMPro;
 
 public class pnj : MonoBehaviour
 {
+    public Animator animator;
+    public bool back;
+    public bool left;
+    public bool right;
+
     private bool playerInCollider = false;
     private bool inDialog = false;
 
@@ -16,6 +21,18 @@ public class pnj : MonoBehaviour
     void Start()
     {
         txt.GetComponent<TextMeshPro>().text = text;
+        if (back == true )
+        {
+            animator.SetBool("Back", true);
+        }
+        if (left == true )
+        {
+            animator.SetBool("Left", true);
+        }
+        if (right == true )
+        {
+            animator.SetBool("Right", true);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)

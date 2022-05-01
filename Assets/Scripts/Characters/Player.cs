@@ -92,16 +92,16 @@ public class Player : Characters
 
     void GetRessources()
     {
-        Collider2D[] hiRessources = Physics2D.OverlapCircleAll(this.transform.position, 2, LayerMask.GetMask("Ressources"));
+        Collider2D[] hiRessources = Physics2D.OverlapCircleAll(this.transform.position, 1, LayerMask.GetMask("Ressources"));
 
         foreach (Collider2D GameObject in hiRessources)
         {
-            if (GameObject.name == "tree")
+            if (GameObject.GetComponent<Ressource>().isTree == true )
             {
                 animator.SetBool("Hache", true);
                 nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
             }
-            else if (GameObject.name == "stone")
+            else
             {
                 animator.SetBool("Pioche", true);
                 nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
@@ -113,7 +113,7 @@ public class Player : Characters
     public void FishingTime()
     {
         //Si on appuie sur E et qu'il y a de l'eau (ou que l'�tat du joueur est "isFishing" d'o� le fait qu'il rerentre a chaque fois qu'il est en isFishing)
-        if ((Input.GetKeyDown(KeyCode.E) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
+        if ((Input.GetKeyDown(KeyCode.P) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
         {
             state = State.isFishing; // On met en isFishing (tant qu'il n'a pas fini).
 
@@ -193,7 +193,6 @@ public class Player : Characters
 
     public override void Die()
     {
-        Debug.Log("FUCKING DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         SceneManager.LoadScene(3);
     }
 

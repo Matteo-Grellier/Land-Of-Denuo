@@ -7,6 +7,8 @@ public class Ressource : MonoBehaviour
     private bool playerInCollider = false;
     private bool canCut = true;
 
+    public bool isTree;
+
     private float nextTime = 0.0f;
 
     public int hp = 100;
@@ -69,7 +71,7 @@ public class Ressource : MonoBehaviour
     void PopItem()
     {
         GameObject itemIsntance = Instantiate(item, transform.position, transform.rotation);
-        itemIsntance.transform.position =  (Vector2)transform.position +(Random.insideUnitCircle * 3  );
+        itemIsntance.transform.position =  (Vector2)transform.position +(Random.insideUnitCircle * 1  );
     }
 
 
