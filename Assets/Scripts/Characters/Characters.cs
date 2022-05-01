@@ -47,7 +47,7 @@ public class Characters : MonoBehaviour
         }
     }
 
-    void Die()
+    public virtual void Die()
     {
 
         Destroy(gameObject);

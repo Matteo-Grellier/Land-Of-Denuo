@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Player : Characters
 {
@@ -188,6 +189,12 @@ public class Player : Characters
                 transform.position = position4;
                 break;
         }
+    }
+
+    public override void Die()
+    {
+        Debug.Log("FUCKING DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        SceneManager.LoadScene(3);
     }
 
 }
