@@ -849,6 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4519e80933e7cf4fb2f4f3e0a1cad74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
+  health: 10
   speedMovement: 5
   rb: {fileID: 208266545}
   positionToVerify: {x: 0, y: 0, z: 0}
@@ -859,6 +861,10 @@ MonoBehaviour:
   gridLayout: {fileID: 0}
   tile: {fileID: 0}
   location: {x: 0, y: 0}
+  fullHealth: {fileID: 0}
+  halHealth: {fileID: 0}
+  emptyHealth: {fileID: 0}
+  hearts: []
 --- !u!50 &208266545
 Rigidbody2D:
   serializedVersion: 4

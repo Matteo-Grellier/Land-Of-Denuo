@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class Player : Characters
 {
@@ -34,10 +36,18 @@ public class Player : Characters
     public Tile tile;
     public Vector2Int location;
 
+    public Sprite fullHealth;
+    public Sprite halHealth;
+    public Sprite emptyHealth;
+
+    public Image[] hearts;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = this.maxHealth;
+    
+
         state = State.isNotFishing;
         SpawnTP();
     }
@@ -45,11 +55,14 @@ public class Player : Characters
     // Update is called once per frame
     void Update()
     {
-        if(movement.x != 0 || movement.y != 0)
+        Hearth();
+
+
+        if (movement.x != 0 || movement.y != 0)
         {
             facingX = movement.x;
             facingY = movement.y;
-            
+
         }
 
         if (state == State.isFishing)
@@ -86,7 +99,6 @@ public class Player : Characters
                 GetRessources();
             }
         }
-       
 
     }
 
@@ -122,6 +134,62 @@ public class Player : Characters
             
             Fishing.IsFishingSucessfull(time_remaining); // On v�rifie que la p�che est une r�ussite ou un �chec.
         }
+
+        
+    }
+
+    public void Hearth()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                if (i + 0.5 == health)
+                {
+                    hearts[i].sprite = halHealth;
+                }
+                else
+                {
+                    hearts[i].sprite = fullHealth;
+                }
+            }
+            else
+            {
+                hearts[i].sprite = emptyHealth;
+            }
+        }
+    }
+
+    public void Heal()
+    {
+        if (health < 0)
+        {
+            health += 0.5f;
+
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+        }
+
+    }
+
+    public void TakeDamage(float damage)
+    {
+
+        if (health > 0)
+        {
+            health -= damage;
+        }
+
+
+        if (health <= 0)
+        {
+            Hearth();
+            Die();
+
+        }
+
     }
 
     public string GetTileName(Vector2 pos)
@@ -166,6 +234,8 @@ public class Player : Characters
             default:
                 break;
         }
+
+
     }
 
     //To spawn the player at the good spot depending on wich teleporter he took

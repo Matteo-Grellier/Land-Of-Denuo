@@ -39,7 +39,7 @@ public class Ennemies : Characters
         {
             case State.Waiting:
                 FindTarget();
-                Debug.Log("STATE : WAITING");
+                //Debug.Log("STATE : WAITING");
                 break;
             case State.chaseTarget:
                 moveEnemy(target.transform.position); //RigidBody du player
