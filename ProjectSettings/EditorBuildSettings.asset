@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FrehdHome.unity
     guid: da8610fce25e185429c089cea0d693eb
   - enabled: 1
-    path: Assets/Scenes/Village.unity
+    path: Assets/Scenes/GoodVillage.unity
     guid: 06ed87bf62c34b341a230ca704a09c83
   - enabled: 1
     path: Assets/Scenes/DeathMenu.unity
