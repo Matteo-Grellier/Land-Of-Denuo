@@ -10,7 +10,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         inventorySlot,
         deleteSlot,
         toolSlot,
-        armorSlot
+        armorSlot,
+        craftSlot,
     }
 
     public Image icon;
