@@ -19,13 +19,13 @@ public class Fishing : MonoBehaviour
                 //Ici il y aura le message/l'animation du "poisson a mordu !"
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && Player.elapsedTime >= time_remaining && Player.elapsedTime <= time_remaining + 2)
+            if (Input.GetKeyDown(KeyCode.P) && Player.elapsedTime >= time_remaining && Player.elapsedTime <= time_remaining + 2)
             {
                 //Si la pêche a réussi.
                 Player.elapsedTime = 0;
                 Player.state = Player.State.isNotFishing;
             }
-            else if(Player.elapsedTime > 0.1 && Player.elapsedTime < time_remaining && Input.GetKeyDown(KeyCode.E))
+            else if(Player.elapsedTime > 0.1 && Player.elapsedTime < time_remaining && Input.GetKeyDown(KeyCode.P))
             {
                 // Si la Pêche a échouée car APPUIE trop tôt.
                 Player.state = Player.State.isNotFishing;

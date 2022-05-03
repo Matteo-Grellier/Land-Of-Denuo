@@ -33,9 +33,11 @@ public class CraftSystem : Interactable
 
             if (!isOpenCraftMenu) {
                 OpenCraftMenu();
+                Player.state = Player.State.isCrafting;
             } else
             {
                 CloseCraftMenu();
+                Player.state = Player.State.isNormal;
             }
         }
 

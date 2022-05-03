@@ -101,7 +101,7 @@ MonoBehaviour:
   isTree: 0
   hp: 100
   timeToDestroy: 10
-  item: {fileID: 8822632716812312675, guid: b0f0694aa39bd8848a7235ee74e0a394, type: 3}
+  item: {fileID: 5822920944927050081, guid: 59f30aab91e19fe4ca939eaf673303eb, type: 3}
   leftOvers: {fileID: 1963939082636461039, guid: b33a1cb0be71fb9429a484f0ab9ac094, type: 3}
 --- !u!58 &4779576079816593763
 CircleCollider2D:

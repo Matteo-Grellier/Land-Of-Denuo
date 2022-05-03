@@ -11,7 +11,9 @@ public class Player : Characters
     public enum State
     {
         isFishing,
-        isNotFishing
+        isNotFishing,
+        isCrafting,
+        isNormal
     }
 
     //for fishing
@@ -65,7 +67,7 @@ public class Player : Characters
 
         }
 
-        if (state == State.isFishing)
+        if (state == State.isFishing || state == State.isCrafting)
         {}
         else
         {
@@ -83,7 +85,7 @@ public class Player : Characters
         }
 
         //Mettre la condition de s'il y a la canne a p�che.
-        if(TileMapWater != null)
+        if(TileMapWater != null && Inventory.instance.toolUsed != null && Inventory.instance.toolUsed.name == "Fishing Rod")
         {
             ThereIsWater(facingX, facingY);
             FishingTime();
