@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
+
 
 public class Characters : MonoBehaviour
 {
-    
+
     //propriétés d'un personnage
-    protected int maxHealth = 100;
-    protected int health = 100;
+    public float maxHealth;
+    public float health;
     float defense = 0;
     float damage = 0;
     //mouvement d'un personnage
@@ -22,8 +24,7 @@ public class Characters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        health = this.maxHealth;
+        health = maxHealth;
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class Characters : MonoBehaviour
     {
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
 
         if (health > 0)
@@ -45,6 +46,7 @@ public class Characters : MonoBehaviour
             Die();
 
         }
+
     }
 
     public virtual void Die()
@@ -53,7 +55,7 @@ public class Characters : MonoBehaviour
         Destroy(gameObject);
 
     }
-    
+
     void FixedUpdate()
     {
         if (Player.state == Player.State.isFishing)

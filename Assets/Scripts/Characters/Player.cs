@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 
 public class Player : Characters
 {
@@ -34,10 +36,18 @@ public class Player : Characters
     public Tile tile;
     public Vector2Int location;
 
+    public Sprite fullHealth;
+    public Sprite halHealth;
+    public Sprite emptyHealth;
+
+    public Image[] hearts;
 
     // Start is called before the first frame update
     void Start()
     {
+        health = this.maxHealth;
+    
+
         state = State.isNotFishing;
         SpawnTP();
     }
@@ -45,11 +55,14 @@ public class Player : Characters
     // Update is called once per frame
     void Update()
     {
-        if(movement.x != 0 || movement.y != 0)
+        Hearth();
+
+
+        if (movement.x != 0 || movement.y != 0)
         {
             facingX = movement.x;
             facingY = movement.y;
-            
+
         }
 
         if (state == State.isFishing)
@@ -86,22 +99,21 @@ public class Player : Characters
                 GetRessources();
             }
         }
-       
 
     }
 
     void GetRessources()
     {
-        Collider2D[] hiRessources = Physics2D.OverlapCircleAll(this.transform.position, 2, LayerMask.GetMask("Ressources"));
+        Collider2D[] hiRessources = Physics2D.OverlapCircleAll(this.transform.position, 1, LayerMask.GetMask("Ressources"));
 
         foreach (Collider2D GameObject in hiRessources)
         {
-            if (GameObject.name == "tree")
+            if (GameObject.GetComponent<Ressource>().isTree == true )
             {
                 animator.SetBool("Hache", true);
                 nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
             }
-            else if (GameObject.name == "stone")
+            else
             {
                 animator.SetBool("Pioche", true);
                 nextRessourceTime = nextRessourceTime = Time.time + 0.2f ;
@@ -113,7 +125,7 @@ public class Player : Characters
     public void FishingTime()
     {
         //Si on appuie sur E et qu'il y a de l'eau (ou que l'�tat du joueur est "isFishing" d'o� le fait qu'il rerentre a chaque fois qu'il est en isFishing)
-        if ((Input.GetKeyDown(KeyCode.E) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
+        if ((Input.GetKeyDown(KeyCode.P) && TileMapWater.GetTile((Vector3Int)location) != null) || state == State.isFishing)
         {
             state = State.isFishing; // On met en isFishing (tant qu'il n'a pas fini).
 
@@ -122,6 +134,62 @@ public class Player : Characters
             
             Fishing.IsFishingSucessfull(time_remaining); // On v�rifie que la p�che est une r�ussite ou un �chec.
         }
+
+        
+    }
+
+    public void Hearth()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                if (i + 0.5 == health)
+                {
+                    hearts[i].sprite = halHealth;
+                }
+                else
+                {
+                    hearts[i].sprite = fullHealth;
+                }
+            }
+            else
+            {
+                hearts[i].sprite = emptyHealth;
+            }
+        }
+    }
+
+    public void Heal()
+    {
+        if (health < 0)
+        {
+            health += 0.5f;
+
+            if (health > maxHealth)
+            {
+                health = maxHealth;
+            }
+        }
+
+    }
+
+    public void TakeDamage(float damage)
+    {
+
+        if (health > 0)
+        {
+            health -= damage;
+        }
+
+
+        if (health <= 0)
+        {
+            Hearth();
+            Die();
+
+        }
+
     }
 
     public string GetTileName(Vector2 pos)
@@ -166,6 +234,8 @@ public class Player : Characters
             default:
                 break;
         }
+
+
     }
 
     //To spawn the player at the good spot depending on wich teleporter he took
@@ -173,7 +243,8 @@ public class Player : Characters
         Vector3 position1 = new Vector3(0.06f, -3.12f, 0.0f);
         Vector3 position2 = new Vector3(6.49f, -2.76f, 0.0f);
         Vector3 position3 = new Vector3(8.78f, 0.06f, 0.0f);
-        Vector3 position4 = new Vector3(-8.21f, 1.86f, 0.0f);
+        Vector3 position4 = new Vector3(-4.96000004f, -2.70000005f, -2.33938503f);
+        Vector3 position12 = new Vector3(9.53999996f, 10.6700001f, 0f);
 
         switch(lastTakenTpNumber) {
             case 1:
@@ -188,12 +259,14 @@ public class Player : Characters
             case 4:
                 transform.position = position4;
                 break;
+            case 12:
+                transform.position = position12;
+                break;
         }
     }
 
     public override void Die()
     {
-        Debug.Log("FUCKING DIEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         SceneManager.LoadScene(3);
     }
 

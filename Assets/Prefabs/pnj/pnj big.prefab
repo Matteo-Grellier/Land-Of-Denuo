@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 2701444625491687664}
   - component: {fileID: 8095086549339418379}
   - component: {fileID: 6458042549192244769}
+  - component: {fileID: 496690745948345806}
   m_Layer: 0
   m_Name: pnj big
   m_TagString: Untagged
@@ -423,6 +424,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9025b868aeadd842b9acd5e24372324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4435869465105782552}
+  back: 0
+  left: 0
+  right: 0
   text: 
   activeBulle: {fileID: 3507360515225370517}
   txt: {fileID: 3830809299109952096}
+--- !u!114 &496690745948345806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435869465105782557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3abce655fabfb043b54f7bdb0feaf98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  render: {fileID: 4435869465105782558}

@@ -9,6 +9,8 @@ public class Interactable : MonoBehaviour
 
     protected bool isInTriggeredZone = false;
 
+    protected Collider2D enterCollider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,7 @@ public class Interactable : MonoBehaviour
         {
             Debug.Log("hello cest moi le player qui rentre");
             isInTriggeredZone = true;
+            enterCollider = col;
         }
     }
 
