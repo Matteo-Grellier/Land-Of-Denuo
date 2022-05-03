@@ -11,6 +11,8 @@ public class EnemyAttack : MonoBehaviour
     public GameObject target;
     public Ennemies ennemiesScript;
 
+    private bool isFirstAttack = true;
+
     public float attackRange = 0.5f;
     public float attackDamage = 0f;
 
@@ -31,9 +33,19 @@ public class EnemyAttack : MonoBehaviour
                 if (ennemiesScript.state == Ennemies.State.Attack)
                 {
 
-                    Attack();
-                    nextAttackTime = Time.time + 1f / attackRate;
-                    // stopAttackTime = Time.time + 1f;
+                    if ( isFirstAttack == true )
+                    {
+                        animator.SetBool("Attack", true);
+                        nextAttackTime = Time.time + attackRate + 0.20f;
+                        isFirstAttack = false;
+                    }
+                    else
+                    {
+                        // nextAttackTime = Time.time + 1f / attackRate;
+                        nextAttackTime = Time.time + attackRate + attackRate;
+                        Attack();
+                        // stopAttackTime = Time.time + 1f;
+                    }
                 }
             }
         }
@@ -48,6 +60,7 @@ public class EnemyAttack : MonoBehaviour
         if ( Vector2.Distance(transform.position, target.transform.position) > ennemiesScript.targetRange )
         {
             animator.SetBool("Attack", false);
+            // HERE a remtrre pour que ça marche, c juste pour test que j'enleve
         }
 
 
