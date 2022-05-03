@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/HealthBar.cs.meta
+guid: 492f2d7e6b2785542ae60ac8844cad4c
+========
+guid: 6a3fb1114839b9c4c8bc2f24f452cd1c
+>>>>>>>> DEV:Assets/Scripts/DragDrop.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

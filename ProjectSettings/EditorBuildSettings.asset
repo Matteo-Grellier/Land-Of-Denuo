@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Menu.unity
+    guid: b89bcbc6310b3e541870dce57a5af69a
+  - enabled: 1
+    path: Assets/Scenes/FrehdHome.unity
+    guid: da8610fce25e185429c089cea0d693eb
+  - enabled: 1
+    path: Assets/Scenes/GoodVillage.unity
+    guid: 06ed87bf62c34b341a230ca704a09c83
+  - enabled: 1
+    path: Assets/Scenes/DeathMenu.unity
+    guid: ba7535dd1e915b949bfc9348787c8d6e
+  - enabled: 1
+    path: Assets/Scenes/VieuxHome.unity
+    guid: 298335a731095b2439c8890a4b2d2774
+  - enabled: 1
+    path: Assets/Scenes/Labyrinth.unity
+    guid: a2567000bb41f2d4a84fecc6a0bc1a8d
+  - enabled: 0
+    path: Assets/Scenes/firstZone.unity
+    guid: 843833433dd5ef941bd46c98ff2db952
   m_configObjects: {}
