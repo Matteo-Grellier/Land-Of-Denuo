@@ -245,7 +245,8 @@ public class Player : Characters
         Vector3 position1 = new Vector3(0.06f, -3.12f, 0.0f);
         Vector3 position2 = new Vector3(6.49f, -2.76f, 0.0f);
         Vector3 position3 = new Vector3(8.78f, 0.06f, 0.0f);
-        Vector3 position4 = new Vector3(-4.96000004f, -2.70000005f, -2.33938503f);
+        Vector3 position4 = new Vector3(-4.96000004f, -2.70000005f, 0f);
+        Vector3 position6 = new Vector3(36.6100006f,13.9200001f,0f);
         Vector3 position12 = new Vector3(9.53999996f, 10.6700001f, 0f);
 
         switch(lastTakenTpNumber) {
@@ -260,6 +261,9 @@ public class Player : Characters
                 break;
             case 4:
                 transform.position = position4;
+                break;
+            case 6:
+                transform.position = position6;
                 break;
             case 12:
                 transform.position = position12;
