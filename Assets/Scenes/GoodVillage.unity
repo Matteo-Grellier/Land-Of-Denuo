@@ -5943,7 +5943,7 @@ PrefabInstance:
       objectReference: {fileID: -8591933691040615345, guid: 23078bf70428df647a1f49a460244c00, type: 2}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: text
-      value: Salut Frehd ? Ca vas ce matin ?
+      value: "Salut Frehd ? \xC7a va ce matin ?"
       objectReference: {fileID: 0}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: right
@@ -13176,7 +13176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: text
-      value: "Tu ... Tu m'a sauv\xE9 !"
+      value: "Tu ... Tu m'as sauv\xE9 !"
       objectReference: {fileID: 0}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: right
@@ -88714,7 +88714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: text
-      value: "Tu veux crafter ? appuye sur E sur la boitte \xE0 c\xF4t\xE9"
+      value: "Tu veux crafter ? Appuie sur E sur la boite \xE0 c\xF4t\xE9"
       objectReference: {fileID: 0}
     - target: {fileID: 6458042549192244769, guid: 81845eb8bb69e094a9b9465e12b837a5, type: 3}
       propertyPath: right
